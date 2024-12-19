@@ -31,7 +31,7 @@ func setup(lipsync_source: AudioStreamLipsync):
 	_anim.track_set_path(0, get_path_to(self))
 	
 	lipsync_source.animation.copy_track(1, _anim)
-	_anim.track_set_path(1, get_path_to(self))
+	_anim.track_set_path(1, NodePath(String(get_path_to(self)) + ":mouth_shape_set"))
 
 
 func play_lipsync(lipsync_source: AudioStreamLipsync = null):
@@ -45,9 +45,12 @@ func play_lipsync(lipsync_source: AudioStreamLipsync = null):
 	await lipsync_stopped
 
 
-func _mouth_shape_set(mouth_shape: int):
-	print("_mouth_shape_set(%s)" % str(mouth_shape))
-	mouth_shape_changed.emit(mouth_shape)
+# Trick: a property setter instead of a regular method, so an AnimationPlayer
+# node can call this inside the editor via updating the value
+@export var mouth_shape_set: int:
+	set(mouth_shape):
+		mouth_shape_set = mouth_shape
+		mouth_shape_changed.emit(mouth_shape)
 
 
 func _on_animation_player_finished(anim_name: StringName):

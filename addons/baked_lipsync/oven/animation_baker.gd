@@ -37,15 +37,19 @@ func create_animation(audio_file: String, lipsync_data: Array):
 	anim.track_set_path(track_index, ".")
 	anim.audio_track_insert_key(track_index, 0.0, audio_stream)
 	
-	track_index = anim.add_track(Animation.TYPE_METHOD)
-	anim.track_set_path(track_index, ".")
+	# Trick:
+	# A method call track does not update inside the editor.
+	# Instead, a value track is used, updating an @export var mouth_shape_set
+	# which has a setter function, in lieu of the method call
+	track_index = anim.add_track(Animation.TYPE_VALUE)
+	anim.track_set_path(track_index, ".:mouth_shape_set")
+	anim.track_set_interpolation_type(track_index, Animation.INTERPOLATION_NEAREST)
+	anim.value_track_set_update_mode(track_index, Animation.UPDATE_DISCRETE)
 	
 	for pair in lipsync_data:
 		var time: float = float(pair[0])
 		var shape: int = MOUTH_SHAPE_CODES[pair[1]] if pair[1] in MOUTH_SHAPE_CODES else 0
-		
-		var method_data = {"method": "_mouth_shape_set", "args": [shape]} # Dark sorcery
-		anim.track_insert_key(track_index, time, method_data)
+		anim.track_insert_key(track_index, time, shape, 0)
 	
 	var anim_lib := AnimationLibrary.new()
 	anim_lib.add_animation("play", anim)

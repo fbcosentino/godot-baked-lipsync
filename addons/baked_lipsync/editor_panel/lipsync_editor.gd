@@ -149,3 +149,7 @@ func _on_btn_zoom_in_pressed() -> void:
 func _on_btn_preview_play_pressed() -> void:
 	if label_res_file.text != "":
 		$ShapePreview2D.play_lipsync(load(label_res_file.text))
+
+
+func stop_preview():
+	$ShapePreview2D.stop_preview()

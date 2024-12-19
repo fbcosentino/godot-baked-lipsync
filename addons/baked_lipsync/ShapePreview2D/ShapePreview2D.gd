@@ -24,3 +24,9 @@ func play_lipsync(lipsync_source: AudioStreamLipsync):
 	if audio_ls.playing:
 		audio_ls.stop_lipsync()
 	audio_ls.play_lipsync(lipsync_source)
+
+
+func stop_preview():
+	if audio_ls.playing:
+		audio_ls.stop_lipsync()
+	

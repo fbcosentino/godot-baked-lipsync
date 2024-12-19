@@ -199,6 +199,7 @@ func _on_file_tree_item_activated() -> void:
 
 
 func _on_lipsync_window_close_requested() -> void:
+	lipsync_editor.stop_preview()
 	lipsync_editor_popup.hide()
 
 
