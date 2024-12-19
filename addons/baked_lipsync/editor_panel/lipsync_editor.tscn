@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://drgkclsn2s712"]
+[gd_scene load_steps=10 format=3 uid="uid://drgkclsn2s712"]
 
 [ext_resource type="Script" path="res://addons/baked_lipsync/editor_panel/lipsync_editor.gd" id="1_vxa4w"]
 [ext_resource type="PackedScene" uid="uid://btu0bvjb0cc6j" path="res://addons/baked_lipsync/audio_preview/AudioStreamPreview.tscn" id="2_lq02m"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bktcncodobwng" path="res://addons/baked_lipsync/images/icons/zoom_reset.png" id="4_gemn8"]
 [ext_resource type="Texture2D" uid="uid://bawm44qamrq76" path="res://addons/baked_lipsync/images/icons/zoom_more.png" id="5_6fajs"]
 [ext_resource type="PackedScene" uid="uid://b1gspkuaaeqbx" path="res://addons/baked_lipsync/ShapePreview2D/ShapePreview2D.tscn" id="7_bp3vv"]
+[ext_resource type="PackedScene" uid="uid://ckfff2cyee05n" path="res://addons/baked_lipsync/ShapePreview3D/ShapePreview3D.tscn" id="8_7q1yp"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0hdsh"]
 draw_center = false
@@ -252,28 +253,42 @@ grow_vertical = 2
 theme_override_font_sizes/font_size = 8
 text = "Zoom"
 
-[node name="ShapePreview2D" parent="." instance=ExtResource("7_bp3vv")]
-layout_mode = 0
-offset_left = 179.0
-offset_top = 365.0
-offset_right = 307.0
-offset_bottom = 470.0
+[node name="PreviewBox" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 31.0
+offset_top = 344.0
+offset_right = 315.0
+offset_bottom = 461.0
 
-[node name="BtnPreviewStyle" type="OptionButton" parent="."]
+[node name="ShapePreview2D" parent="PreviewBox" instance=ExtResource("7_bp3vv")]
 layout_mode = 0
-offset_left = 30.0
-offset_top = 387.0
-offset_right = 162.0
-offset_bottom = 412.0
+offset_left = 150.0
+offset_top = 5.0
+offset_right = 278.0
+offset_bottom = 110.0
+
+[node name="ShapePreview3D" parent="PreviewBox" instance=ExtResource("8_7q1yp")]
+visible = false
+layout_mode = 0
+offset_left = 150.0
+offset_top = 5.0
+offset_right = 278.0
+offset_bottom = 110.0
+
+[node name="BtnPreviewStyle" type="OptionButton" parent="PreviewBox"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 27.0
+offset_right = 133.0
+offset_bottom = 52.0
 theme_override_font_sizes/font_size = 12
-disabled = true
 selected = 0
 item_count = 2
 popup/item_0/text = "2D (Textures)"
 popup/item_1/text = "3D (Shape keys)"
 popup/item_1/id = 1
 
-[node name="Caption" type="Label" parent="BtnPreviewStyle"]
+[node name="Caption" type="Label" parent="PreviewBox/BtnPreviewStyle"]
 self_modulate = Color(1, 1, 1, 0.501961)
 layout_mode = 1
 offset_top = -24.0
@@ -282,12 +297,12 @@ offset_bottom = -7.0
 theme_override_font_sizes/font_size = 12
 text = "Preview style"
 
-[node name="BtnPreviewPlay" type="Button" parent="."]
+[node name="BtnPreviewPlay" type="Button" parent="PreviewBox"]
 layout_mode = 0
-offset_left = 31.0
-offset_top = 425.0
-offset_right = 162.0
-offset_bottom = 456.0
+offset_left = 2.0
+offset_top = 65.0
+offset_right = 133.0
+offset_bottom = 96.0
 text = "Play"
 
 [connection signal="pressed" from="BtnGenerate" to="." method="_on_btn_generate_pressed"]
@@ -295,4 +310,5 @@ text = "Play"
 [connection signal="pressed" from="PanelExpressions/ZoomBox/BtnZoomOut" to="." method="_on_btn_zoom_out_pressed"]
 [connection signal="pressed" from="PanelExpressions/ZoomBox/BtnZoomReset" to="." method="_on_btn_zoom_reset_pressed"]
 [connection signal="pressed" from="PanelExpressions/ZoomBox/BtnZoomIn" to="." method="_on_btn_zoom_in_pressed"]
-[connection signal="pressed" from="BtnPreviewPlay" to="." method="_on_btn_preview_play_pressed"]
+[connection signal="item_selected" from="PreviewBox/BtnPreviewStyle" to="." method="_on_btn_preview_style_item_selected"]
+[connection signal="pressed" from="PreviewBox/BtnPreviewPlay" to="." method="_on_btn_preview_play_pressed"]

@@ -18,6 +18,9 @@ var template_item_Expression := preload("res://addons/baked_lipsync/editor_panel
 @onready var mouth_shapes_box := $PanelExpressions/ScrollContainer/Timeline/MouthShapesBox
 @onready var expressions_box := $PanelExpressions/ScrollContainer/Timeline/ExpressionsBox
 
+@onready var preview_2d := $PreviewBox/ShapePreview2D
+@onready var preview_3d := $PreviewBox/ShapePreview3D
+
 @onready var btn_generate := $BtnGenerate
 
 var current_zoom := ZOOM_DEFAULT
@@ -148,8 +151,17 @@ func _on_btn_zoom_in_pressed() -> void:
 
 func _on_btn_preview_play_pressed() -> void:
 	if label_res_file.text != "":
-		$ShapePreview2D.play_lipsync(load(label_res_file.text))
+		if preview_2d.visible:
+			preview_2d.play_lipsync(load(label_res_file.text))
+		elif preview_3d.visible:
+			preview_3d.play_lipsync(load(label_res_file.text))
 
 
 func stop_preview():
-	$ShapePreview2D.stop_preview()
+	preview_2d.stop_preview()
+	preview_3d.stop_preview()
+
+
+func _on_btn_preview_style_item_selected(index: int) -> void:
+	preview_2d.visible = (index == 0)
+	preview_3d.visible = (index == 1)
