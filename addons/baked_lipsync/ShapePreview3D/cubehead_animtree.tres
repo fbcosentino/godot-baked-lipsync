@@ -1,0 +1,148 @@
+[gd_resource type="AnimationNodeBlendTree" load_steps=18 format=3 uid="uid://c062hb8vtcijh"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_80ilg"]
+animation = &"expression/rest"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_1ciio"]
+animation = &"expression/smile"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_3svat"]
+animation = &"expression/angry"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_aw5gg"]
+animation = &"expression/surprise"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_fcrof"]
+animation = &"expression/upset"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ugyi7"]
+animation = &"mouth/shape_1"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_kox7r"]
+animation = &"mouth/shape_2"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_7w6wk"]
+animation = &"mouth/shape_3"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_qmxef"]
+animation = &"mouth/shape_4"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_jpchw"]
+animation = &"mouth/shape_5"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2fip7"]
+animation = &"mouth/shape_6"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ry3j1"]
+animation = &"mouth/shape_7"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_eeugs"]
+animation = &"mouth/shape_8"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_02ed5"]
+animation = &"mouth/shape_0"
+
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_m3tlw"]
+filter_enabled = true
+filters = ["cubehead/CubeFace:blend_shapes/jawForward", "cubehead/CubeFace:blend_shapes/jawOpen", "cubehead/CubeFace:blend_shapes/mouthClose", "cubehead/CubeFace:blend_shapes/mouthFunnel", "cubehead/CubeFace:blend_shapes/mouthPucker"]
+
+[sub_resource type="AnimationNodeTransition" id="AnimationNodeTransition_ikfk0"]
+xfade_time = 0.1
+input_0/name = "rest"
+input_0/auto_advance = false
+input_0/break_loop_at_end = false
+input_0/reset = true
+input_1/name = "joy"
+input_1/auto_advance = false
+input_1/break_loop_at_end = false
+input_1/reset = true
+input_2/name = "anger"
+input_2/auto_advance = false
+input_2/break_loop_at_end = false
+input_2/reset = true
+input_3/name = "surprise"
+input_3/auto_advance = false
+input_3/break_loop_at_end = false
+input_3/reset = true
+input_4/name = "upset"
+input_4/auto_advance = false
+input_4/break_loop_at_end = false
+input_4/reset = true
+
+[sub_resource type="AnimationNodeTransition" id="AnimationNodeTransition_0meny"]
+xfade_time = 0.15
+input_0/name = "state_0"
+input_0/auto_advance = false
+input_0/break_loop_at_end = false
+input_0/reset = true
+input_1/name = "state_1"
+input_1/auto_advance = false
+input_1/break_loop_at_end = false
+input_1/reset = true
+input_2/name = "state_2"
+input_2/auto_advance = false
+input_2/break_loop_at_end = false
+input_2/reset = true
+input_3/name = "state_3"
+input_3/auto_advance = false
+input_3/break_loop_at_end = false
+input_3/reset = true
+input_4/name = "state_4"
+input_4/auto_advance = false
+input_4/break_loop_at_end = false
+input_4/reset = true
+input_5/name = "state_5"
+input_5/auto_advance = false
+input_5/break_loop_at_end = false
+input_5/reset = true
+input_6/name = "state_6"
+input_6/auto_advance = false
+input_6/break_loop_at_end = false
+input_6/reset = true
+input_7/name = "state_7"
+input_7/auto_advance = false
+input_7/break_loop_at_end = false
+input_7/reset = true
+input_8/name = "state_8"
+input_8/auto_advance = false
+input_8/break_loop_at_end = false
+input_8/reset = true
+
+[resource]
+graph_offset = Vector2(-437.397, 206.729)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_02ed5")
+nodes/Animation/position = Vector2(-560, 400)
+"nodes/Animation 10/node" = SubResource("AnimationNodeAnimation_80ilg")
+"nodes/Animation 10/position" = Vector2(-506.667, -213.333)
+"nodes/Animation 11/node" = SubResource("AnimationNodeAnimation_1ciio")
+"nodes/Animation 11/position" = Vector2(-320, -133.333)
+"nodes/Animation 12/node" = SubResource("AnimationNodeAnimation_3svat")
+"nodes/Animation 12/position" = Vector2(-506.667, -53.3333)
+"nodes/Animation 13/node" = SubResource("AnimationNodeAnimation_aw5gg")
+"nodes/Animation 13/position" = Vector2(-320, 26.6667)
+"nodes/Animation 14/node" = SubResource("AnimationNodeAnimation_fcrof")
+"nodes/Animation 14/position" = Vector2(-506.667, 106.667)
+"nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_ugyi7")
+"nodes/Animation 2/position" = Vector2(-400, 480)
+"nodes/Animation 3/node" = SubResource("AnimationNodeAnimation_kox7r")
+"nodes/Animation 3/position" = Vector2(-560, 560)
+"nodes/Animation 4/node" = SubResource("AnimationNodeAnimation_7w6wk")
+"nodes/Animation 4/position" = Vector2(-400, 640)
+"nodes/Animation 5/node" = SubResource("AnimationNodeAnimation_qmxef")
+"nodes/Animation 5/position" = Vector2(-560, 720)
+"nodes/Animation 6/node" = SubResource("AnimationNodeAnimation_jpchw")
+"nodes/Animation 6/position" = Vector2(-400, 800)
+"nodes/Animation 7/node" = SubResource("AnimationNodeAnimation_2fip7")
+"nodes/Animation 7/position" = Vector2(-560, 880)
+"nodes/Animation 8/node" = SubResource("AnimationNodeAnimation_ry3j1")
+"nodes/Animation 8/position" = Vector2(-400, 960)
+"nodes/Animation 9/node" = SubResource("AnimationNodeAnimation_eeugs")
+"nodes/Animation 9/position" = Vector2(-560, 1040)
+nodes/blend/node = SubResource("AnimationNodeBlend2_m3tlw")
+nodes/blend/position = Vector2(798.235, 179.617)
+nodes/expression/node = SubResource("AnimationNodeTransition_ikfk0")
+nodes/expression/position = Vector2(240, -26.6667)
+nodes/mouth/node = SubResource("AnimationNodeTransition_0meny")
+nodes/mouth/position = Vector2(160, 560)
+nodes/output/position = Vector2(1120, 213.333)
+node_connections = [&"blend", 0, &"expression", &"blend", 1, &"mouth", &"expression", 0, &"Animation 10", &"expression", 1, &"Animation 11", &"expression", 2, &"Animation 12", &"expression", 3, &"Animation 13", &"expression", 4, &"Animation 14", &"mouth", 0, &"Animation", &"mouth", 1, &"Animation 2", &"mouth", 2, &"Animation 3", &"mouth", 3, &"Animation 4", &"mouth", 4, &"Animation 5", &"mouth", 5, &"Animation 6", &"mouth", 6, &"Animation 7", &"mouth", 7, &"Animation 8", &"mouth", 8, &"Animation 9", &"output", 0, &"blend"]

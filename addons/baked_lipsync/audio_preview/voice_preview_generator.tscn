@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://c2fo50owdhh06"]
+
+[ext_resource type="Script" path="res://addons/baked_lipsync/audio_preview/voice_preview_generator.gd" id="1_yf83h"]
+
+[node name="VoicePreviewGenerator" type="Node"]
+script = ExtResource("1_yf83h")

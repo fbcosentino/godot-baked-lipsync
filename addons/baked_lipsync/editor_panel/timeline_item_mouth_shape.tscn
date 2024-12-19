@@ -1,0 +1,65 @@
+[gd_scene load_steps=4 format=3 uid="uid://ck680tcir8wdu"]
+
+[ext_resource type="Script" path="res://addons/baked_lipsync/editor_panel/timeline_item_mouth_shape.gd" id="1_cst1f"]
+[ext_resource type="Texture2D" uid="uid://d0kfr8c3gua6l" path="res://addons/baked_lipsync/images/icons/shape-X.png" id="1_sicl2"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_seayy"]
+bg_color = Color(0, 0.14, 0.14, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0.678431, 0.678431, 1)
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+
+[node name="MouthShape" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 24.0
+offset_bottom = 40.0
+script = ExtResource("1_cst1f")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_seayy")
+
+[node name="Line" type="ColorRect" parent="."]
+layout_mode = 0
+offset_top = -66.0
+offset_right = 1.0
+offset_bottom = 40.0
+color = Color(0, 0.68, 0.68, 1)
+
+[node name="Icon" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 2.0
+offset_bottom = -18.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_sicl2")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -19.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 12
+text = "X"
+horizontal_alignment = 1
+vertical_alignment = 1

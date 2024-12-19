@@ -1,0 +1,114 @@
+[gd_scene load_steps=3 format=3 uid="uid://ciphvneny77qq"]
+
+[ext_resource type="Script" path="res://addons/baked_lipsync/editor_panel/editor_panel.gd" id="1_e600f"]
+[ext_resource type="PackedScene" uid="uid://drgkclsn2s712" path="res://addons/baked_lipsync/editor_panel/lipsync_editor.tscn" id="2_yckhj"]
+
+[node name="Lipsync" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_e600f")
+
+[node name="PathEdit" type="LineEdit" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_right = -2.0
+offset_bottom = 31.0
+grow_horizontal = 2
+tooltip_text = "Press ENTER while typing into this field to update the audio file tree below."
+placeholder_text = "res://"
+
+[node name="FileTree" type="Tree" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = 46.0
+offset_right = -2.0
+offset_bottom = -44.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BottomPanel" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -41.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="LabelContainsLipsync" type="Label" parent="BottomPanel"]
+layout_mode = 0
+offset_left = 177.0
+offset_top = -2.0
+offset_right = 217.0
+offset_bottom = 21.0
+text = "NO"
+
+[node name="Caption" type="Label" parent="BottomPanel/LabelContainsLipsync"]
+self_modulate = Color(1, 1, 1, 0.501961)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -168.0
+offset_top = -8.5
+offset_right = -41.0
+offset_bottom = 8.5
+grow_vertical = 2
+theme_override_font_sizes/font_size = 12
+text = "Contains lipsync data:"
+
+[node name="LabelContainsExpression" type="Label" parent="BottomPanel"]
+layout_mode = 0
+offset_left = 177.0
+offset_top = 18.0
+offset_right = 217.0
+offset_bottom = 41.0
+text = "NO"
+
+[node name="Caption" type="Label" parent="BottomPanel/LabelContainsExpression"]
+self_modulate = Color(1, 1, 1, 0.501961)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -168.0
+offset_top = -8.5
+offset_right = -15.0
+offset_bottom = 8.5
+grow_vertical = 2
+theme_override_font_sizes/font_size = 12
+text = "Contains expression  data:"
+
+[node name="LipsyncWindow" type="Window" parent="."]
+title = "Lipsync Editor"
+initial_position = 4
+size = Vector2i(608, 508)
+visible = false
+min_size = Vector2i(600, 400)
+
+[node name="LipsyncEditor" parent="LipsyncWindow" instance=ExtResource("2_yckhj")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[connection signal="text_submitted" from="PathEdit" to="." method="_on_path_edit_text_submitted"]
+[connection signal="item_activated" from="FileTree" to="." method="_on_file_tree_item_activated"]
+[connection signal="item_selected" from="FileTree" to="." method="_on_file_tree_item_selected"]
+[connection signal="nothing_selected" from="FileTree" to="." method="_on_file_tree_nothing_selected"]
+[connection signal="close_requested" from="LipsyncWindow" to="." method="_on_lipsync_window_close_requested"]
+[connection signal="lipsync_data_generated" from="LipsyncWindow/LipsyncEditor" to="." method="_on_lipsync_editor_lipsync_data_generated"]
