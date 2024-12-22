@@ -2,12 +2,27 @@
 extends AudioStreamPlayer3D
 
 signal mouth_shape_changed(mouth_shape: int)
+signal expression_changed(expression: String)
 signal lipsync_stopped
 
 var _animation_player := AnimationPlayer.new()
 var _anim := Animation.new()
 
 var is_playing_lipsync := false
+
+# Trick: a property setter instead of a regular method, so an AnimationPlayer
+# node can call this inside the editor via updating the value
+
+@export var mouth_shape_set: int:
+	set(mouth_shape):
+		mouth_shape_set = mouth_shape
+		mouth_shape_changed.emit(mouth_shape)
+
+@export var expression_set: String:
+	set(expression):
+		expression_set = expression
+		expression_changed.emit(expression)
+
 
 func _init():
 	add_child(_animation_player)
@@ -32,6 +47,9 @@ func setup(lipsync_source: AudioStreamLipsync):
 	
 	lipsync_source.animation.copy_track(1, _anim)
 	_anim.track_set_path(1, NodePath(String(get_path_to(self)) + ":mouth_shape_set"))
+	
+	lipsync_source.animation.copy_track(2, _anim)
+	_anim.track_set_path(2, NodePath(String(get_path_to(self)) + ":expression_set"))
 
 
 func play_lipsync(lipsync_source: AudioStreamLipsync = null):
@@ -44,14 +62,6 @@ func play_lipsync(lipsync_source: AudioStreamLipsync = null):
 	_animation_player.play()
 
 	await lipsync_stopped
-
-
-# Trick: a property setter instead of a regular method, so an AnimationPlayer
-# node can call this inside the editor via updating the value
-@export var mouth_shape_set: int:
-	set(mouth_shape):
-		mouth_shape_set = mouth_shape
-		mouth_shape_changed.emit(mouth_shape)
 
 
 func _on_animation_player_finished(anim_name: StringName):
@@ -67,4 +77,5 @@ func stop_lipsync():
 		return
 		
 	is_playing_lipsync = false
+	_animation_player.stop()
 	lipsync_stopped.emit()

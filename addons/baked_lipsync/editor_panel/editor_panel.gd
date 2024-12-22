@@ -205,3 +205,9 @@ func _on_lipsync_window_close_requested() -> void:
 
 func _on_lipsync_editor_lipsync_data_generated(audio_file: String, res_file: String) -> void:
 	refresh_file_tree(current_path)
+
+
+func _on_lipsync_editor_dismissed() -> void:
+	lipsync_editor.stop_preview()
+	lipsync_editor_popup.hide()
+	refresh_file_tree(current_path)

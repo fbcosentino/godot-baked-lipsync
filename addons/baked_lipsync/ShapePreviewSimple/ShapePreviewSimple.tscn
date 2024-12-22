@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://c0taotivjjjja"]
+
+[ext_resource type="Texture2D" uid="uid://bs5jsf6awm4uu" path="res://addons/baked_lipsync/images/preview_images/puppet_head_X.png" id="1_4duhc"]
+[ext_resource type="Script" path="res://addons/baked_lipsync/ShapePreviewSimple/ShapePreviewSimple.gd" id="2_dkk6q"]
+[ext_resource type="Script" path="res://addons/baked_lipsync/nodes/AudioStreamPlayerLipsync/AudioStreamPlayerLipsync.gd" id="3_xdf7f"]
+
+[node name="ShapePreviewSimple" type="TextureRect"]
+offset_right = 128.0
+offset_bottom = 105.0
+texture = ExtResource("1_4duhc")
+expand_mode = 1
+stretch_mode = 5
+script = ExtResource("2_dkk6q")
+
+[node name="AudioPlayerLipsync" type="AudioStreamPlayer" parent="."]
+script = ExtResource("3_xdf7f")
+
+[connection signal="expression_changed" from="AudioPlayerLipsync" to="." method="_on_audio_player_lipsync_expression_changed"]
+[connection signal="mouth_shape_changed" from="AudioPlayerLipsync" to="." method="_on_audio_player_lipsync_mouth_shape_changed"]

@@ -48,4 +48,5 @@ script = ExtResource("3_cbfh6")
 transform = Transform3D(0.921185, 0.0908392, -0.378372, 0, 0.97237, 0.233445, 0.389124, -0.215047, 0.895733, -0.913, 0.518, 2.387)
 fov = 30.0
 
+[connection signal="expression_changed" from="SubViewport/Node3D/AudioStreamPlayerLipsync" to="." method="_on_audio_stream_player_lipsync_expression_changed"]
 [connection signal="mouth_shape_changed" from="SubViewport/Node3D/AudioStreamPlayerLipsync" to="." method="_on_audio_stream_player_lipsync_mouth_shape_changed"]

@@ -91,7 +91,7 @@ text = "Contains expression  data:"
 [node name="LipsyncWindow" type="Window" parent="."]
 title = "Lipsync Editor"
 initial_position = 4
-size = Vector2i(608, 508)
+size = Vector2i(608, 558)
 visible = false
 min_size = Vector2i(600, 400)
 
@@ -111,4 +111,5 @@ grow_vertical = 2
 [connection signal="item_selected" from="FileTree" to="." method="_on_file_tree_item_selected"]
 [connection signal="nothing_selected" from="FileTree" to="." method="_on_file_tree_nothing_selected"]
 [connection signal="close_requested" from="LipsyncWindow" to="." method="_on_lipsync_window_close_requested"]
+[connection signal="dismissed" from="LipsyncWindow/LipsyncEditor" to="." method="_on_lipsync_editor_dismissed"]
 [connection signal="lipsync_data_generated" from="LipsyncWindow/LipsyncEditor" to="." method="_on_lipsync_editor_lipsync_data_generated"]

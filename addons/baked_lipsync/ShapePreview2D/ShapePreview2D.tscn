@@ -15,4 +15,5 @@ script = ExtResource("2_nawgd")
 [node name="AudioPlayerLipsync" type="AudioStreamPlayer" parent="."]
 script = ExtResource("3_3mgsy")
 
+[connection signal="expression_changed" from="AudioPlayerLipsync" to="." method="_on_audio_player_lipsync_expression_changed"]
 [connection signal="mouth_shape_changed" from="AudioPlayerLipsync" to="." method="_on_audio_player_lipsync_mouth_shape_changed"]

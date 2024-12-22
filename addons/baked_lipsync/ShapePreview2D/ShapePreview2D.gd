@@ -1,6 +1,8 @@
 @tool
 extends TextureRect
 
+signal expression_changed(expression: String)
+
 @onready var audio_ls := $AudioPlayerLipsync
 
 var mouth_shapes := {
@@ -18,6 +20,9 @@ var mouth_shapes := {
 
 func _on_audio_player_lipsync_mouth_shape_changed(shape_index: int) -> void:
 	texture = mouth_shapes[shape_index] if shape_index in mouth_shapes else mouth_shapes[0]
+
+func _on_audio_player_lipsync_expression_changed(expression: String) -> void:
+	expression_changed.emit(expression)
 
 
 func play_lipsync(lipsync_source: AudioStreamLipsync):

@@ -1,5 +1,13 @@
+@tool
 extends Node3D
 
+const AVAILABLE_EXPRESSIONS := [
+	"rest",
+	"joy",
+	"anger",
+	"surprise",
+	"upset",
+]
 
 @onready var anim_tree := $AnimationTree
 
@@ -10,4 +18,7 @@ func set_mouth_shape(shape: int):
 
 
 func set_expression(expr: String):
-	anim_tree.set("parameters/expression/transition_request", expr)
+	if expr in AVAILABLE_EXPRESSIONS:
+		anim_tree.set("parameters/expression/transition_request", expr)
+	else:
+		anim_tree.set("parameters/expression/transition_request", "rest")
