@@ -77,6 +77,7 @@ offset_left = -1.0
 offset_top = -66.0
 offset_right = 1.0
 offset_bottom = 32.0
+mouse_filter = 2
 color = Color(0, 0, 1, 1)
 
 [node name="Label" type="Label" parent="."]

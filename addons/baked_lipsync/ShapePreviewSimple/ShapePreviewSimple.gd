@@ -31,10 +31,10 @@ func _on_audio_player_lipsync_expression_changed(expression: String) -> void:
 	expression_changed.emit(expression)
 
 
-func play_lipsync(lipsync_source: AudioStreamLipsync):
+func play_lipsync(lipsync_source: AudioStreamLipsync, start: float = 0.0):
 	if audio_ls.playing:
 		audio_ls.stop_lipsync()
-	audio_ls.play_lipsync(lipsync_source)
+	audio_ls.play_lipsync(lipsync_source, start)
 
 
 func stop_preview():

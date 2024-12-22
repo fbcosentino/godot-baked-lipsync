@@ -33,6 +33,7 @@ var template_item_Expression := preload("res://addons/baked_lipsync/editor_panel
 @onready var preview_3d_tip := $PreviewBox/ShapePreview3D_Tip
 @onready var preview_simple := $PreviewBox/ShapePreviewSimple
 @onready var preview_expression_label := $PreviewBox/LabelPreviewExpression
+@onready var btn_play := $PreviewBox/BtnPreviewPlay
 
 
 @onready var btn_generate := $BtnGenerate
@@ -305,7 +306,19 @@ func _on_btn_zoom_in_pressed() -> void:
 	_update_zoom()
 
 
+
+
 func _on_btn_preview_play_pressed() -> void:
+	_play_preview(0.0)
+
+
+func _on_audio_stream_preview_gui_input(event: InputEvent) -> void:
+	if (event is InputEventMouseButton) and (event.pressed):
+		var start: float = timeline.get_local_mouse_position().x / current_pixels_per_second
+		_play_preview(start)
+
+
+func _play_preview(start: float = 0.0) -> void:
 	if playback_tween:
 		stop_preview()
 
@@ -318,23 +331,28 @@ func _on_btn_preview_play_pressed() -> void:
 			return
 		
 		if preview_2d.visible:
-			preview_2d.play_lipsync(preview_res)
+			preview_2d.play_lipsync(preview_res, start)
 		elif preview_3d.visible:
-			preview_3d.play_lipsync(preview_res)
+			preview_3d.play_lipsync(preview_res, start)
 		elif preview_simple.visible:
-			preview_simple.play_lipsync(preview_res)
+			preview_simple.play_lipsync(preview_res, start)
 		
 		if playback_tween:
 			playback_tween.kill()
 			playback_tween = null
 		
-		playback_cursor.position.x = 0
+		playback_cursor.position.x = start * current_pixels_per_second
+		var playback_duration = current_audio_length - start
 		
 		playback_tween = create_tween()
 		playback_tween.finished.connect(_on_playback_tween_finished)
-		playback_tween.tween_property(playback_cursor, "position:x", current_audio_length * current_pixels_per_second, current_audio_length)
+		playback_tween.set_trans(Tween.TRANS_LINEAR) # It's the default anyways, but it's good practice to be explicit
+		playback_tween.tween_property(playback_cursor, "position:x", current_audio_length * current_pixels_per_second, playback_duration)
 		playback_tween.play()
 		playback_cursor.show()
+		
+		btn_play.text = "Stop"
+
 
 
 func _on_preview_expression_changed(expression: String) -> void:
@@ -346,6 +364,7 @@ func _on_playback_tween_finished():
 	playback_tween.kill()
 	playback_tween = null
 	playback_cursor.hide()
+	btn_play.text = "Play"
 
 
 func stop_preview():
@@ -357,6 +376,7 @@ func stop_preview():
 	preview_3d.stop_preview()
 	preview_simple.stop_preview()
 	playback_cursor.hide()
+	btn_play.text = "Play"
 
 
 func _on_btn_preview_style_item_selected(index: int) -> void:

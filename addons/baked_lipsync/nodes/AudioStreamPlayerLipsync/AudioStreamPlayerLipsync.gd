@@ -56,13 +56,13 @@ func setup(lipsync_source: AudioStreamLipsync):
 	_anim.track_set_path(2, NodePath(String(get_path_to(self)) + ":expression_set"))
 
 
-func play_lipsync(lipsync_source: AudioStreamLipsync = null):
+func play_lipsync(lipsync_source: AudioStreamLipsync = null, start: float = 0.0):
 	if lipsync_source != null:
 		setup(lipsync_source)
 	
 	is_playing_lipsync = true
 	_animation_player.current_animation = "play"
-	_animation_player.seek(0, true)
+	_animation_player.seek(start, false)
 	_animation_player.play()
 	await lipsync_stopped
 

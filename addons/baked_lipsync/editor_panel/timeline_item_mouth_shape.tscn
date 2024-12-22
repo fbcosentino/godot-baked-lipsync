@@ -34,6 +34,7 @@ layout_mode = 0
 offset_top = -66.0
 offset_right = 1.0
 offset_bottom = 40.0
+mouse_filter = 2
 color = Color(0, 0.68, 0.68, 1)
 
 [node name="Icon" type="TextureRect" parent="."]

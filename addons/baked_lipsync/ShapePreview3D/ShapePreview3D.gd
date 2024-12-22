@@ -15,11 +15,11 @@ func _on_audio_stream_player_lipsync_expression_changed(expression: String) -> v
 	shape_tester.set_expression(expression)
 
 
-func play_lipsync(lipsync_source: AudioStreamLipsync):
+func play_lipsync(lipsync_source: AudioStreamLipsync, start: float = 0.0):
 	shape_tester.set_expression("rest")
 	if audio_ls.playing:
 		audio_ls.stop_lipsync()
-	audio_ls.play_lipsync(lipsync_source)
+	audio_ls.play_lipsync(lipsync_source, start)
 
 
 func stop_preview():
