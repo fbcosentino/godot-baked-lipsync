@@ -1,0 +1,1945 @@
+[gd_scene load_steps=24 format=3 uid="uid://4ma4uxo4iu3r"]
+
+[ext_resource type="Texture2D" uid="uid://tmv8ybuh8f6o" path="res://example/assets/tv_images/background.png" id="1_88ugo"]
+[ext_resource type="Script" path="res://example/example1/example1.gd" id="1_o6iwh"]
+[ext_resource type="Texture2D" uid="uid://dsv4i14obyjuq" path="res://example/assets/tv_images/glow.png" id="2_7jpfx"]
+[ext_resource type="PackedScene" uid="uid://cy80bw5yckyn3" path="res://example/assets/lipsync-chan/lipsync-chan_animated.glb" id="2_w6mdb"]
+[ext_resource type="Shader" path="res://example/assets/lipsync-chan/simple_toon.gdshader" id="3_d52eo"]
+[ext_resource type="Texture2D" uid="uid://dac5srxvtswjt" path="res://example/assets/lipsync-chan/lipsync-chan_animated_body_color_lit.png" id="4_xj7i2"]
+[ext_resource type="Texture2D" uid="uid://7khod4vhoolk" path="res://example/assets/lipsync-chan/lipsync-chan_animated_body_normal.png" id="5_q8k7p"]
+[ext_resource type="Material" uid="uid://blcmsb1bhtvc1" path="res://example/assets/lipsync-chan/face.material" id="8_fw08b"]
+[ext_resource type="Script" path="res://addons/baked_lipsync/nodes/AudioStreamPlayerLipsync/AudioStreamPlayerLipsync.gd" id="11_2geab"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7npe0"]
+resource_name = "BodyClothes"
+render_priority = 0
+shader = ExtResource("3_d52eo")
+shader_parameter/albedo = Color(0.674815, 0.674815, 0.674815, 1)
+shader_parameter/alpha_scissor_threshold = 0.5
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 0.940909
+shader_parameter/metallic_texture_channel = null
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/emission = Color(0, 0, 0, 1)
+shader_parameter/emission_energy = 0.7
+shader_parameter/normal_scale = 1.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+shader_parameter/texture_albedo = ExtResource("4_xj7i2")
+shader_parameter/texture_emission = ExtResource("4_xj7i2")
+shader_parameter/texture_normal = ExtResource("5_q8k7p")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pcjgf"]
+resource_name = "BodyClothes"
+render_priority = 0
+shader = ExtResource("3_d52eo")
+shader_parameter/albedo = Color(0.674815, 0.674815, 0.674815, 1)
+shader_parameter/alpha_scissor_threshold = 0.5
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 0.940909
+shader_parameter/metallic_texture_channel = null
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/emission = Color(0, 0, 0, 1)
+shader_parameter/emission_energy = 0.7
+shader_parameter/normal_scale = 1.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+shader_parameter/texture_albedo = ExtResource("4_xj7i2")
+shader_parameter/texture_emission = ExtResource("4_xj7i2")
+shader_parameter/texture_normal = ExtResource("5_q8k7p")
+
+[sub_resource type="Animation" id="Animation_slok8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SubViewportContainer/SubViewport/lipsync-chan_animated/Armature/Skeleton3D/Face:blend_shapes/Fcl_BRW_Angry")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SubViewportContainer/SubViewport/lipsync-chan_animated/Armature/Skeleton3D/Face:blend_shapes/Fcl_BRW_Fun")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SubViewportContainer/SubViewport/lipsync-chan_animated/Armature/Skeleton3D/Face:blend_shapes/Fcl_BRW_Joy")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SubViewportContainer/SubViewport/lipsync-chan_animated/Armature/Skeleton3D/Face:blend_shapes/Fcl_BRW_Sorrow")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("SubViewportContainer/SubViewport/lipsync-chan_animated/Armature/Skeleton3D/Face:blend_shapes/Fcl_BRW_Surprised")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("SubViewportContainer/SubViewport/lipsync-chan_animated/Armature/Skeleton3D/Face:blend_shapes/Fcl_EYE_Angry")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("SubViewportContainer/SubViewport/lipsync-chan_animated/Armature/Skeleton3D/Face:blend_shapes/Fcl_EYE_Close")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("SubViewportContainer/SubViewport/lipsync-chan_animated/Armature/Skeleton3D/Face:blend_shapes/Fcl_EYE_Fun")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("SubViewportContainer/SubViewport/lipsync-chan_animated/Armature/Skeleton3D/Face:blend_shapes/Fcl_EYE_Joy")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("SubViewportContainer/SubViewport/lipsync-chan_animated/Armature/Skeleton3D/Face:blend_shapes/Fcl_EYE_Sorrow")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("SubViewportContainer/SubViewport/lipsync-chan_animated/Armature/Skeleton3D/Face:blend_shapes/Fcl_EYE_Surprised")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("SubViewportContainer/SubViewport/lipsync-chan_animated/Armature/Skeleton3D/Face:blend_shapes/Fcl_MTH_Angry")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("SubViewportContainer/SubViewport/lipsync-chan_animated/Armature/Skeleton3D/Face:blend_shapes/Fcl_MTH_Fun")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("SubViewportContainer/SubViewport/lipsync-chan_animated/Armature/Skeleton3D/Face:blend_shapes/Fcl_MTH_Joy")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("SubViewportContainer/SubViewport/lipsync-chan_animated/Armature/Skeleton3D/Face:blend_shapes/Fcl_MTH_Sorrow")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("SubViewportContainer/SubViewport/lipsync-chan_animated/Armature/Skeleton3D/Face:blend_shapes/Fcl_MTH_Surprised")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_13na2"]
+resource_name = "face_angry"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SubViewportContainer/SubViewport/lipsync-chan_animated/Armature/Skeleton3D/Face:blend_shapes/Fcl_BRW_Angry")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SubViewportContainer/SubViewport/lipsync-chan_animated/Armature/Skeleton3D/Face:blend_shapes/Fcl_BRW_Fun")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SubViewportContainer/SubViewport/lipsync-chan_animated/Armature/Skeleton3D/Face:blend_shapes/Fcl_BRW_Joy")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SubViewportContainer/SubViewport/lipsync-chan_animated/Armature/Skeleton3D/Face:blend_shapes/Fcl_BRW_Sorrow")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("SubViewportContainer/SubViewport/lipsync-chan_animated/Armature/Skeleton3D/Face:blend_shapes/Fcl_BRW_Surprised")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("SubViewportContainer/SubViewport/lipsync-chan_animated/Armature/Skeleton3D/Face:blend_shapes/Fcl_EYE_Angry")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("SubViewportContainer/SubViewport/lipsync-chan_animated/Armature/Skeleton3D/Face:blend_shapes/Fcl_EYE_Close")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("SubViewportContainer/SubViewport/lipsync-chan_animated/Armature/Skeleton3D/Face:blend_shapes/Fcl_EYE_Fun")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("SubViewportContainer/SubViewport/lipsync-chan_animated/Armature/Skeleton3D/Face:blend_shapes/Fcl_EYE_Joy")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("SubViewportContainer/SubViewport/lipsync-chan_animated/Armature/Skeleton3D/Face:blend_shapes/Fcl_EYE_Sorrow")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("SubViewportContainer/SubViewport/lipsync-chan_animated/Armature/Skeleton3D/Face:blend_shapes/Fcl_EYE_Surprised")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("SubViewportContainer/SubViewport/lipsync-chan_animated/Armature/Skeleton3D/Face:blend_shapes/Fcl_MTH_Angry")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.2]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("SubViewportContainer/SubViewport/lipsync-chan_animated/Armature/Skeleton3D/Face:blend_shapes/Fcl_MTH_Fun")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("SubViewportContainer/SubViewport/lipsync-chan_animated/Armature/Skeleton3D/Face:blend_shapes/Fcl_MTH_Joy")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("SubViewportContainer/SubViewport/lipsync-chan_animated/Armature/Skeleton3D/Face:blend_shapes/Fcl_MTH_Sorrow")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("SubViewportContainer/SubViewport/lipsync-chan_animated/Armature/Skeleton3D/Face:blend_shapes/Fcl_MTH_Surprised")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_ajp8w"]
+resource_name = "face_annoyed"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SubViewportContainer/SubViewport/lipsync-chan_animated/Armature/Skeleton3D/Face:blend_shapes/Fcl_BRW_Angry")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.5]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SubViewportContainer/SubViewport/lipsync-chan_animated/Armature/Skeleton3D/Face:blend_shapes/Fcl_BRW_Fun")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SubViewportContainer/SubViewport/lipsync-chan_animated/Armature/Skeleton3D/Face:blend_shapes/Fcl_BRW_Joy")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SubViewportContainer/SubViewport/lipsync-chan_animated/Armature/Skeleton3D/Face:blend_shapes/Fcl_BRW_Sorrow")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("SubViewportContainer/SubViewport/lipsync-chan_animated/Armature/Skeleton3D/Face:blend_shapes/Fcl_BRW_Surprised")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("SubViewportContainer/SubViewport/lipsync-chan_animated/Armature/Skeleton3D/Face:blend_shapes/Fcl_EYE_Angry")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.5]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("SubViewportContainer/SubViewport/lipsync-chan_animated/Armature/Skeleton3D/Face:blend_shapes/Fcl_EYE_Close")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.3]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("SubViewportContainer/SubViewport/lipsync-chan_animated/Armature/Skeleton3D/Face:blend_shapes/Fcl_EYE_Fun")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("SubViewportContainer/SubViewport/lipsync-chan_animated/Armature/Skeleton3D/Face:blend_shapes/Fcl_EYE_Joy")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("SubViewportContainer/SubViewport/lipsync-chan_animated/Armature/Skeleton3D/Face:blend_shapes/Fcl_EYE_Sorrow")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("SubViewportContainer/SubViewport/lipsync-chan_animated/Armature/Skeleton3D/Face:blend_shapes/Fcl_EYE_Surprised")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("SubViewportContainer/SubViewport/lipsync-chan_animated/Armature/Skeleton3D/Face:blend_shapes/Fcl_MTH_Angry")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.2]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("SubViewportContainer/SubViewport/lipsync-chan_animated/Armature/Skeleton3D/Face:blend_shapes/Fcl_MTH_Fun")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("SubViewportContainer/SubViewport/lipsync-chan_animated/Armature/Skeleton3D/Face:blend_shapes/Fcl_MTH_Joy")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("SubViewportContainer/SubViewport/lipsync-chan_animated/Armature/Skeleton3D/Face:blend_shapes/Fcl_MTH_Sorrow")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("SubViewportContainer/SubViewport/lipsync-chan_animated/Armature/Skeleton3D/Face:blend_shapes/Fcl_MTH_Surprised")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_0epgv"]
+resource_name = "face_fun"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SubViewportContainer/SubViewport/lipsync-chan_animated/Armature/Skeleton3D/Face:blend_shapes/Fcl_BRW_Angry")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SubViewportContainer/SubViewport/lipsync-chan_animated/Armature/Skeleton3D/Face:blend_shapes/Fcl_BRW_Fun")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SubViewportContainer/SubViewport/lipsync-chan_animated/Armature/Skeleton3D/Face:blend_shapes/Fcl_BRW_Joy")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SubViewportContainer/SubViewport/lipsync-chan_animated/Armature/Skeleton3D/Face:blend_shapes/Fcl_BRW_Sorrow")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("SubViewportContainer/SubViewport/lipsync-chan_animated/Armature/Skeleton3D/Face:blend_shapes/Fcl_BRW_Surprised")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("SubViewportContainer/SubViewport/lipsync-chan_animated/Armature/Skeleton3D/Face:blend_shapes/Fcl_EYE_Angry")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("SubViewportContainer/SubViewport/lipsync-chan_animated/Armature/Skeleton3D/Face:blend_shapes/Fcl_EYE_Close")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("SubViewportContainer/SubViewport/lipsync-chan_animated/Armature/Skeleton3D/Face:blend_shapes/Fcl_EYE_Fun")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("SubViewportContainer/SubViewport/lipsync-chan_animated/Armature/Skeleton3D/Face:blend_shapes/Fcl_EYE_Joy")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("SubViewportContainer/SubViewport/lipsync-chan_animated/Armature/Skeleton3D/Face:blend_shapes/Fcl_EYE_Sorrow")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("SubViewportContainer/SubViewport/lipsync-chan_animated/Armature/Skeleton3D/Face:blend_shapes/Fcl_EYE_Surprised")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("SubViewportContainer/SubViewport/lipsync-chan_animated/Armature/Skeleton3D/Face:blend_shapes/Fcl_MTH_Angry")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("SubViewportContainer/SubViewport/lipsync-chan_animated/Armature/Skeleton3D/Face:blend_shapes/Fcl_MTH_Fun")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.2]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("SubViewportContainer/SubViewport/lipsync-chan_animated/Armature/Skeleton3D/Face:blend_shapes/Fcl_MTH_Joy")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("SubViewportContainer/SubViewport/lipsync-chan_animated/Armature/Skeleton3D/Face:blend_shapes/Fcl_MTH_Sorrow")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("SubViewportContainer/SubViewport/lipsync-chan_animated/Armature/Skeleton3D/Face:blend_shapes/Fcl_MTH_Surprised")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_0qc77"]
+resource_name = "face_joy"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SubViewportContainer/SubViewport/lipsync-chan_animated/Armature/Skeleton3D/Face:blend_shapes/Fcl_BRW_Angry")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SubViewportContainer/SubViewport/lipsync-chan_animated/Armature/Skeleton3D/Face:blend_shapes/Fcl_BRW_Fun")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SubViewportContainer/SubViewport/lipsync-chan_animated/Armature/Skeleton3D/Face:blend_shapes/Fcl_BRW_Joy")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SubViewportContainer/SubViewport/lipsync-chan_animated/Armature/Skeleton3D/Face:blend_shapes/Fcl_BRW_Sorrow")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("SubViewportContainer/SubViewport/lipsync-chan_animated/Armature/Skeleton3D/Face:blend_shapes/Fcl_BRW_Surprised")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("SubViewportContainer/SubViewport/lipsync-chan_animated/Armature/Skeleton3D/Face:blend_shapes/Fcl_EYE_Angry")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("SubViewportContainer/SubViewport/lipsync-chan_animated/Armature/Skeleton3D/Face:blend_shapes/Fcl_EYE_Close")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("SubViewportContainer/SubViewport/lipsync-chan_animated/Armature/Skeleton3D/Face:blend_shapes/Fcl_EYE_Fun")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("SubViewportContainer/SubViewport/lipsync-chan_animated/Armature/Skeleton3D/Face:blend_shapes/Fcl_EYE_Joy")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("SubViewportContainer/SubViewport/lipsync-chan_animated/Armature/Skeleton3D/Face:blend_shapes/Fcl_EYE_Sorrow")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("SubViewportContainer/SubViewport/lipsync-chan_animated/Armature/Skeleton3D/Face:blend_shapes/Fcl_EYE_Surprised")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("SubViewportContainer/SubViewport/lipsync-chan_animated/Armature/Skeleton3D/Face:blend_shapes/Fcl_MTH_Angry")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("SubViewportContainer/SubViewport/lipsync-chan_animated/Armature/Skeleton3D/Face:blend_shapes/Fcl_MTH_Fun")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("SubViewportContainer/SubViewport/lipsync-chan_animated/Armature/Skeleton3D/Face:blend_shapes/Fcl_MTH_Joy")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.2]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("SubViewportContainer/SubViewport/lipsync-chan_animated/Armature/Skeleton3D/Face:blend_shapes/Fcl_MTH_Sorrow")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("SubViewportContainer/SubViewport/lipsync-chan_animated/Armature/Skeleton3D/Face:blend_shapes/Fcl_MTH_Surprised")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_2cexh"]
+resource_name = "face_neutral"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SubViewportContainer/SubViewport/lipsync-chan_animated/Armature/Skeleton3D/Face:blend_shapes/Fcl_BRW_Angry")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SubViewportContainer/SubViewport/lipsync-chan_animated/Armature/Skeleton3D/Face:blend_shapes/Fcl_BRW_Fun")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SubViewportContainer/SubViewport/lipsync-chan_animated/Armature/Skeleton3D/Face:blend_shapes/Fcl_BRW_Joy")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SubViewportContainer/SubViewport/lipsync-chan_animated/Armature/Skeleton3D/Face:blend_shapes/Fcl_BRW_Sorrow")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("SubViewportContainer/SubViewport/lipsync-chan_animated/Armature/Skeleton3D/Face:blend_shapes/Fcl_BRW_Surprised")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("SubViewportContainer/SubViewport/lipsync-chan_animated/Armature/Skeleton3D/Face:blend_shapes/Fcl_EYE_Angry")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("SubViewportContainer/SubViewport/lipsync-chan_animated/Armature/Skeleton3D/Face:blend_shapes/Fcl_EYE_Close")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("SubViewportContainer/SubViewport/lipsync-chan_animated/Armature/Skeleton3D/Face:blend_shapes/Fcl_EYE_Fun")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("SubViewportContainer/SubViewport/lipsync-chan_animated/Armature/Skeleton3D/Face:blend_shapes/Fcl_EYE_Joy")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("SubViewportContainer/SubViewport/lipsync-chan_animated/Armature/Skeleton3D/Face:blend_shapes/Fcl_EYE_Sorrow")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("SubViewportContainer/SubViewport/lipsync-chan_animated/Armature/Skeleton3D/Face:blend_shapes/Fcl_EYE_Surprised")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("SubViewportContainer/SubViewport/lipsync-chan_animated/Armature/Skeleton3D/Face:blend_shapes/Fcl_MTH_Angry")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("SubViewportContainer/SubViewport/lipsync-chan_animated/Armature/Skeleton3D/Face:blend_shapes/Fcl_MTH_Fun")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("SubViewportContainer/SubViewport/lipsync-chan_animated/Armature/Skeleton3D/Face:blend_shapes/Fcl_MTH_Joy")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("SubViewportContainer/SubViewport/lipsync-chan_animated/Armature/Skeleton3D/Face:blend_shapes/Fcl_MTH_Sorrow")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("SubViewportContainer/SubViewport/lipsync-chan_animated/Armature/Skeleton3D/Face:blend_shapes/Fcl_MTH_Surprised")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_0e62u"]
+resource_name = "face_sorrow"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SubViewportContainer/SubViewport/lipsync-chan_animated/Armature/Skeleton3D/Face:blend_shapes/Fcl_BRW_Angry")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SubViewportContainer/SubViewport/lipsync-chan_animated/Armature/Skeleton3D/Face:blend_shapes/Fcl_BRW_Fun")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SubViewportContainer/SubViewport/lipsync-chan_animated/Armature/Skeleton3D/Face:blend_shapes/Fcl_BRW_Joy")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SubViewportContainer/SubViewport/lipsync-chan_animated/Armature/Skeleton3D/Face:blend_shapes/Fcl_BRW_Sorrow")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("SubViewportContainer/SubViewport/lipsync-chan_animated/Armature/Skeleton3D/Face:blend_shapes/Fcl_BRW_Surprised")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("SubViewportContainer/SubViewport/lipsync-chan_animated/Armature/Skeleton3D/Face:blend_shapes/Fcl_EYE_Angry")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("SubViewportContainer/SubViewport/lipsync-chan_animated/Armature/Skeleton3D/Face:blend_shapes/Fcl_EYE_Close")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("SubViewportContainer/SubViewport/lipsync-chan_animated/Armature/Skeleton3D/Face:blend_shapes/Fcl_EYE_Fun")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("SubViewportContainer/SubViewport/lipsync-chan_animated/Armature/Skeleton3D/Face:blend_shapes/Fcl_EYE_Joy")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("SubViewportContainer/SubViewport/lipsync-chan_animated/Armature/Skeleton3D/Face:blend_shapes/Fcl_EYE_Sorrow")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("SubViewportContainer/SubViewport/lipsync-chan_animated/Armature/Skeleton3D/Face:blend_shapes/Fcl_EYE_Surprised")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("SubViewportContainer/SubViewport/lipsync-chan_animated/Armature/Skeleton3D/Face:blend_shapes/Fcl_MTH_Angry")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("SubViewportContainer/SubViewport/lipsync-chan_animated/Armature/Skeleton3D/Face:blend_shapes/Fcl_MTH_Fun")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("SubViewportContainer/SubViewport/lipsync-chan_animated/Armature/Skeleton3D/Face:blend_shapes/Fcl_MTH_Joy")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("SubViewportContainer/SubViewport/lipsync-chan_animated/Armature/Skeleton3D/Face:blend_shapes/Fcl_MTH_Sorrow")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.2]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("SubViewportContainer/SubViewport/lipsync-chan_animated/Armature/Skeleton3D/Face:blend_shapes/Fcl_MTH_Surprised")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_42q3i"]
+resource_name = "face_surprised"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SubViewportContainer/SubViewport/lipsync-chan_animated/Armature/Skeleton3D/Face:blend_shapes/Fcl_BRW_Angry")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SubViewportContainer/SubViewport/lipsync-chan_animated/Armature/Skeleton3D/Face:blend_shapes/Fcl_BRW_Fun")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SubViewportContainer/SubViewport/lipsync-chan_animated/Armature/Skeleton3D/Face:blend_shapes/Fcl_BRW_Joy")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SubViewportContainer/SubViewport/lipsync-chan_animated/Armature/Skeleton3D/Face:blend_shapes/Fcl_BRW_Sorrow")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("SubViewportContainer/SubViewport/lipsync-chan_animated/Armature/Skeleton3D/Face:blend_shapes/Fcl_BRW_Surprised")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("SubViewportContainer/SubViewport/lipsync-chan_animated/Armature/Skeleton3D/Face:blend_shapes/Fcl_EYE_Angry")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("SubViewportContainer/SubViewport/lipsync-chan_animated/Armature/Skeleton3D/Face:blend_shapes/Fcl_EYE_Close")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("SubViewportContainer/SubViewport/lipsync-chan_animated/Armature/Skeleton3D/Face:blend_shapes/Fcl_EYE_Fun")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("SubViewportContainer/SubViewport/lipsync-chan_animated/Armature/Skeleton3D/Face:blend_shapes/Fcl_EYE_Joy")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("SubViewportContainer/SubViewport/lipsync-chan_animated/Armature/Skeleton3D/Face:blend_shapes/Fcl_EYE_Sorrow")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("SubViewportContainer/SubViewport/lipsync-chan_animated/Armature/Skeleton3D/Face:blend_shapes/Fcl_EYE_Surprised")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("SubViewportContainer/SubViewport/lipsync-chan_animated/Armature/Skeleton3D/Face:blend_shapes/Fcl_MTH_Angry")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("SubViewportContainer/SubViewport/lipsync-chan_animated/Armature/Skeleton3D/Face:blend_shapes/Fcl_MTH_Fun")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("SubViewportContainer/SubViewport/lipsync-chan_animated/Armature/Skeleton3D/Face:blend_shapes/Fcl_MTH_Joy")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("SubViewportContainer/SubViewport/lipsync-chan_animated/Armature/Skeleton3D/Face:blend_shapes/Fcl_MTH_Sorrow")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("SubViewportContainer/SubViewport/lipsync-chan_animated/Armature/Skeleton3D/Face:blend_shapes/Fcl_MTH_Surprised")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.2]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1fuog"]
+_data = {
+"RESET": SubResource("Animation_slok8"),
+"face_angry": SubResource("Animation_13na2"),
+"face_annoyed": SubResource("Animation_ajp8w"),
+"face_fun": SubResource("Animation_0epgv"),
+"face_joy": SubResource("Animation_0qc77"),
+"face_neutral": SubResource("Animation_2cexh"),
+"face_sorrow": SubResource("Animation_0e62u"),
+"face_surprised": SubResource("Animation_42q3i")
+}
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_127cm"]
+
+[sub_resource type="Sky" id="Sky_w0k6q"]
+sky_material = SubResource("ProceduralSkyMaterial_127cm")
+
+[sub_resource type="Environment" id="Environment_2v5s5"]
+background_mode = 2
+sky = SubResource("Sky_w0k6q")
+
+[node name="Example1" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_o6iwh")
+
+[node name="AudioStreamPlayerLipsync" type="AudioStreamPlayer" parent="."]
+script = ExtResource("11_2geab")
+
+[node name="BG" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -720.0
+offset_top = -405.0
+offset_right = 720.0
+offset_bottom = 405.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_88ugo")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+modulate = Color(0.846, 0.94, 0.846, 1)
+custom_minimum_size = Vector2(640, 480)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -616.0
+offset_top = -304.0
+offset_right = 282.0
+offset_bottom = 303.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+transparent_bg = true
+handle_input_locally = false
+msaa_3d = 2
+size = Vector2i(898, 607)
+render_target_update_mode = 4
+
+[node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 0.991445, 0.130526, 0, -0.130526, 0.991445, 0, 1.4, 1.8)
+fov = 36.0
+
+[node name="lipsync-chan_animated" parent="SubViewportContainer/SubViewport" instance=ExtResource("2_w6mdb")]
+
+[node name="Skeleton3D" parent="SubViewportContainer/SubViewport/lipsync-chan_animated/Armature" index="0"]
+bones/0/rotation = Quaternion(0.00625744, 0.000153508, 0.000153508, 0.99998)
+bones/0/scale = Vector3(1, 1, 1)
+bones/1/rotation = Quaternion(0.111468, -0.0001706, -0.000134468, 0.993768)
+bones/2/rotation = Quaternion(-0.104278, 4.92943e-09, 2.13792e-08, 0.994548)
+bones/2/scale = Vector3(1, 1, 1)
+bones/3/rotation = Quaternion(-0.0810185, 1.47904e-07, 1.56839e-07, 0.996713)
+bones/3/scale = Vector3(1, 1, 1)
+bones/4/rotation = Quaternion(-0.0734195, -1.83544e-08, -3.23953e-08, 0.997301)
+bones/4/scale = Vector3(1, 1, 1)
+bones/5/rotation = Quaternion(-0.0358539, 0.566958, 0.754695, -0.328191)
+bones/5/scale = Vector3(1, 1, 1)
+bones/7/rotation = Quaternion(0.0358511, 0.566958, 0.754695, 0.328188)
+bones/7/scale = Vector3(1, 1, 1)
+bones/9/rotation = Quaternion(0.99972, 3.67998e-07, -3.21062e-06, 0.0236633)
+bones/9/scale = Vector3(1, 1, 1)
+bones/10/rotation = Quaternion(0.986456, -4.00417e-08, -3.27542e-06, -0.164024)
+bones/11/scale = Vector3(1, 1, 1)
+bones/12/scale = Vector3(1, 1, 1)
+bones/13/rotation = Quaternion(0.998729, 0.0246193, 0.024616, 0.0364408)
+bones/13/scale = Vector3(1, 1, 1.00001)
+bones/14/rotation = Quaternion(-0.0910188, 0.105339, -0.102252, 0.984969)
+bones/16/rotation = Quaternion(0.997313, -0.0344945, -0.0344944, 0.0546623)
+bones/17/rotation = Quaternion(-0.0651395, -0.121778, 0.113394, 0.983905)
+bones/19/rotation = Quaternion(0.996736, -0.0145653, -0.0145646, 0.0780639)
+bones/19/scale = Vector3(1, 1, 1.00001)
+bones/20/rotation = Quaternion(0.0541345, -0.0740449, 0.0618216, 0.993864)
+bones/20/scale = Vector3(1, 1, 1)
+bones/22/rotation = Quaternion(0.997437, -0.0366317, -0.0366348, 0.0493516)
+bones/22/scale = Vector3(0.999995, 1, 0.99999)
+bones/23/rotation = Quaternion(-0.0171119, 0.138771, -0.124489, 0.98232)
+bones/25/rotation = Quaternion(0.985047, 0.1218, 0.1218, -0.00361843)
+bones/25/scale = Vector3(1, 1, 1)
+bones/26/rotation = Quaternion(-0.0564446, -0.129303, 0.116246, 0.983149)
+bones/26/scale = Vector3(1, 1, 1)
+bones/28/rotation = Quaternion(0.993719, -0.0484803, -0.0484787, 0.0884446)
+bones/29/rotation = Quaternion(-0.0355769, -0.439844, 0.371135, 0.817025)
+bones/29/scale = Vector3(1, 1, 1)
+bones/31/rotation = Quaternion(0.972288, 0.16425, 0.16425, 0.026448)
+bones/31/scale = Vector3(1, 1, 1)
+bones/32/rotation = Quaternion(-7.92554e-05, -0.0027308, 0.00256013, 0.999993)
+bones/34/rotation = Quaternion(0.980717, -0.138193, -0.138194, -0.000364704)
+bones/34/scale = Vector3(0.999998, 1, 1)
+bones/35/rotation = Quaternion(-0.000658282, 0.00959173, -0.0094133, 0.999909)
+bones/37/rotation = Quaternion(0.99547, -0.0238458, -0.0238458, 0.0888973)
+bones/37/scale = Vector3(1, 1, 0.999999)
+bones/38/scale = Vector3(1, 1, 1)
+bones/40/rotation = Quaternion(0.994028, 0.0768934, 0.0768934, -0.00908737)
+bones/40/scale = Vector3(0.999999, 1, 1)
+bones/41/scale = Vector3(1, 1, 1)
+bones/44/rotation = Quaternion(-0.0459128, 0.377732, -0.415714, 0.82607)
+bones/44/scale = Vector3(1, 1, 1)
+bones/46/rotation = Quaternion(0.988788, 0.105515, 0.105515, 0.00568367)
+bones/46/scale = Vector3(1, 1, 1)
+bones/49/rotation = Quaternion(0.998067, 0.0267189, 0.026718, -0.0493353)
+bones/49/scale = Vector3(0.999999, 1, 0.999997)
+bones/50/rotation = Quaternion(-0.385577, 0.0683217, -0.0971451, 0.915)
+bones/50/scale = Vector3(1, 1, 1)
+bones/52/rotation = Quaternion(0.972147, 0.150425, 0.150425, 0.0983567)
+bones/52/scale = Vector3(1, 1, 0.999999)
+bones/53/rotation = Quaternion(-0.0242311, 0.342941, -0.286733, 0.894197)
+bones/53/scale = Vector3(1, 1, 1)
+bones/55/rotation = Quaternion(0.996167, -0.0365504, -0.03655, 0.0705588)
+bones/58/rotation = Quaternion(0.99737, 0.0252005, 0.0252001, 0.0631175)
+bones/59/rotation = Quaternion(-0.00606251, -0.0113284, 0.00969188, 0.99987)
+bones/61/rotation = Quaternion(0.0109919, 0.119224, 0.119224, 0.985622)
+bones/62/rotation = Quaternion(0.418423, 0.527963, 0.616429, -0.407667)
+bones/62/scale = Vector3(1, 1, 1)
+bones/63/rotation = Quaternion(0.555084, 0.535382, -0.457749, -0.442395)
+bones/63/scale = Vector3(1, 1, 1)
+bones/65/rotation = Quaternion(-2.63504e-06, 0.00162328, 0.00162328, 0.999997)
+bones/66/rotation = Quaternion(0.986456, -9.35291e-10, -3.51061e-06, -0.164024)
+bones/67/rotation = Quaternion(-0.504358, -0.420477, -0.55971, 0.505516)
+bones/68/rotation = Quaternion(0.0477225, 0.0483351, -0.00772783, 0.997661)
+bones/68/scale = Vector3(1, 1, 1)
+bones/69/rotation = Quaternion(0.0190923, 0.0209318, -0.0384281, 0.99886)
+bones/69/scale = Vector3(1, 1, 1)
+bones/70/rotation = Quaternion(0.00570563, 0.00606351, 0.0259265, 0.999629)
+bones/71/rotation = Quaternion(-0.0075638, -0.0079457, -0.0210939, 0.999717)
+bones/71/scale = Vector3(1, 1, 1)
+bones/72/rotation = Quaternion(-0.014289, -0.015486, 0.0130727, 0.999692)
+bones/72/scale = Vector3(1, 1, 1)
+bones/73/rotation = Quaternion(3.46336e-09, 6.28643e-09, -2.61935e-10, 1)
+bones/74/rotation = Quaternion(-0.00447763, -0.00473349, -0.0167588, 0.999838)
+bones/74/scale = Vector3(1, 1, 1)
+bones/75/rotation = Quaternion(-0.000793239, -0.000862995, 0.00708582, 0.999974)
+bones/75/scale = Vector3(1, 1, 1)
+bones/76/rotation = Quaternion(2.98314e-10, 6.91216e-11, 5.15606e-08, 1)
+bones/77/rotation = Quaternion(-0.0077099, -0.00808276, -0.0191466, 0.999754)
+bones/77/scale = Vector3(1, 1, 1)
+bones/78/rotation = Quaternion(0.000374374, 0.000334922, 0.00714656, 0.999974)
+bones/78/scale = Vector3(1, 1, 1)
+bones/79/rotation = Quaternion(-5.60249e-10, 5.60249e-10, -6.1742e-08, 1)
+bones/80/rotation = Quaternion(-0.00573729, -0.00603523, -0.0171857, 0.999818)
+bones/80/scale = Vector3(1, 1, 1)
+bones/81/rotation = Quaternion(0.000541872, 0.000541883, 0.00715899, 0.999974)
+bones/81/scale = Vector3(1, 1, 1)
+bones/82/rotation = Quaternion(5.09317e-11, 4.36557e-11, 5.02382e-09, 1)
+bones/83/rotation = Quaternion(-0.0563183, -0.0606321, -0.367978, 0.926145)
+bones/84/rotation = Quaternion(0.00627165, 0.0106473, 0.0220132, 0.999681)
+bones/84/scale = Vector3(1, 1, 1)
+bones/85/rotation = Quaternion(-1.39698e-08, 6.51926e-09, -1.93133e-07, 1)
+bones/86/rotation = Quaternion(-0.504358, 0.420478, 0.55971, 0.505516)
+bones/86/scale = Vector3(1, 1, 1)
+bones/87/rotation = Quaternion(0.047723, -0.0483356, 0.00772752, 0.997661)
+bones/88/rotation = Quaternion(0.0190929, -0.0209323, 0.0384273, 0.99886)
+bones/89/rotation = Quaternion(0.00570761, -0.00606573, -0.0259264, 0.999629)
+bones/89/scale = Vector3(1, 1, 1)
+bones/91/rotation = Quaternion(-0.0142844, 0.0154812, -0.0130708, 0.999693)
+bones/91/scale = Vector3(1, 1, 1)
+bones/92/rotation = Quaternion(4.86034e-09, -1.68802e-09, -8.45466e-08, 1)
+bones/93/rotation = Quaternion(-0.00447691, 0.00473292, 0.0167696, 0.999838)
+bones/93/scale = Vector3(1, 1, 1)
+bones/94/rotation = Quaternion(-0.000787241, 0.000856573, -0.00708672, 0.999974)
+bones/95/rotation = Quaternion(-3.74712e-10, -1.30967e-10, 5.25674e-08, 1)
+bones/96/rotation = Quaternion(-0.00770976, 0.00808273, 0.0191464, 0.999754)
+bones/96/scale = Vector3(1, 1, 1)
+bones/97/rotation = Quaternion(0.000376313, -0.000337046, -0.00714666, 0.999974)
+bones/97/scale = Vector3(1, 1, 1)
+bones/98/rotation = Quaternion(5.09317e-10, 2.18279e-11, -1.59089e-08, 1)
+bones/99/rotation = Quaternion(-0.00573866, 0.00603677, 0.0171882, 0.999818)
+bones/99/scale = Vector3(1, 1, 1)
+bones/100/rotation = Quaternion(0.000543081, -0.00054321, -0.00715918, 0.999974)
+bones/100/scale = Vector3(1, 1, 1)
+bones/101/rotation = Quaternion(2.80124e-10, -8.00355e-11, 7.8478e-09, 1)
+bones/102/rotation = Quaternion(-0.0559043, 0.060209, 0.368186, 0.926115)
+bones/102/scale = Vector3(1, 1, 1)
+bones/103/rotation = Quaternion(0.00624481, -0.0106131, -0.0220647, 0.999681)
+bones/103/scale = Vector3(1, 1, 1)
+bones/104/rotation = Quaternion(-5.58794e-09, -1.39698e-08, 1.40164e-07, 1)
+bones/105/rotation = Quaternion(0.993951, -0.0101908, -0.00803149, 0.109056)
+bones/105/scale = Vector3(1, 1, 1)
+bones/106/rotation = Quaternion(0.0173666, -0.00366488, 0.00340753, 0.999837)
+bones/106/scale = Vector3(1, 1, 1)
+bones/107/rotation = Quaternion(-0.528857, -0.0075796, 0.0217931, 0.848397)
+bones/108/rotation = Quaternion(-4.64788e-08, 5.61122e-08, -1.58325e-08, 1)
+bones/109/rotation = Quaternion(0.993951, 0.0101917, 0.00803207, 0.109057)
+bones/109/scale = Vector3(1, 1, 0.999995)
+bones/110/rotation = Quaternion(0.0173666, 0.0036653, -0.00340793, 0.999837)
+bones/111/rotation = Quaternion(-0.528858, 0.00758443, -0.0217992, 0.848397)
+bones/112/rotation = Quaternion(-1.67347e-08, 3.51574e-08, -1.58325e-08, 1)
+
+[node name="Body" parent="SubViewportContainer/SubViewport/lipsync-chan_animated/Armature/Skeleton3D" index="0"]
+material_override = SubResource("ShaderMaterial_7npe0")
+cast_shadow = 0
+lod_bias = 5.0
+
+[node name="Face" parent="SubViewportContainer/SubViewport/lipsync-chan_animated/Armature/Skeleton3D" index="1"]
+material_override = ExtResource("8_fw08b")
+cast_shadow = 0
+lod_bias = 5.0
+
+[node name="Hair" parent="SubViewportContainer/SubViewport/lipsync-chan_animated/Armature/Skeleton3D" index="2"]
+material_override = SubResource("ShaderMaterial_pcjgf")
+cast_shadow = 0
+lod_bias = 5.0
+
+[node name="AnimationPlayer" parent="SubViewportContainer/SubViewport/lipsync-chan_animated" index="1"]
+autoplay = "idle"
+
+[node name="AnimationPlayerFace" type="AnimationPlayer" parent="SubViewportContainer/SubViewport"]
+root_node = NodePath("../../..")
+libraries = {
+"": SubResource("AnimationLibrary_1fuog")
+}
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="SubViewportContainer/SubViewport"]
+environment = SubResource("Environment_2v5s5")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(0.675366, 0.255916, -0.691656, -0.145098, 0.965639, 0.215611, 0.723068, -0.0452584, 0.689292, -1.31243, 1.5834, -0.424237)
+light_energy = 0.5
+
+[node name="Glow" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -720.0
+offset_top = -405.0
+offset_right = 720.0
+offset_bottom = 405.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_7jpfx")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="BtnAudio1" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 336.0
+offset_top = -343.0
+offset_right = 664.0
+offset_bottom = -306.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Who are you?"
+
+[node name="BtnAudio2" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 336.0
+offset_top = -279.0
+offset_right = 664.0
+offset_bottom = -242.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Where did you come from?"
+
+[node name="TextPreview" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 319.0
+offset_top = 7.0
+offset_right = 702.0
+offset_bottom = 360.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Lorem ipsum"
+autowrap_mode = 3
+text_overrun_behavior = 4
+
+[connection signal="expression_changed" from="AudioStreamPlayerLipsync" to="." method="_on_audio_stream_player_lipsync_expression_changed"]
+[connection signal="lipsync_stopped" from="AudioStreamPlayerLipsync" to="." method="_on_audio_stream_player_lipsync_lipsync_stopped"]
+[connection signal="mouth_shape_changed" from="AudioStreamPlayerLipsync" to="." method="_on_audio_stream_player_lipsync_mouth_shape_changed"]
+
+[editable path="SubViewportContainer/SubViewport/lipsync-chan_animated"]

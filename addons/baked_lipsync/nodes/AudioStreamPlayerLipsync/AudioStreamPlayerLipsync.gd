@@ -16,13 +16,11 @@ var is_playing_lipsync := false
 
 @export var mouth_shape_set: int:
 	set(mouth_shape):
-		print("mouth_shape: ", mouth_shape)
 		mouth_shape_set = mouth_shape
 		mouth_shape_changed.emit(mouth_shape)
 
 @export var expression_set: String:
 	set(expression):
-		print("expression: ", expression)
 		expression_set = expression
 		expression_changed.emit(expression)
 
