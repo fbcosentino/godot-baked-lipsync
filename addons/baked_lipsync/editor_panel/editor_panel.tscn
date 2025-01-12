@@ -15,6 +15,12 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_e600f")
+rhubard_download_windows = null
+rhubard_download_linux = null
+rhubard_download_macos = null
+
+[node name="RhubarbDownloader" type="HTTPRequest" parent="."]
+download_file = "user://rhubarb_downloaded.zip"
 
 [node name="PathEdit" type="LineEdit" parent="."]
 layout_mode = 1

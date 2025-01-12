@@ -1,4 +1,6 @@
 # Godot 4+ specific ignores
 .godot/
 /android/
-addons/baked_lipsync/oven/rhubarb/
+addons/baked_lipsync/oven/Rhubarb-Lip-Sync-1.13.0-Windows/
+addons/baked_lipsync/oven/Rhubarb-Lip-Sync-1.13.0-Linux/
+addons/baked_lipsync/oven/Rhubarb-Lip-Sync-1.13.0-macOS/

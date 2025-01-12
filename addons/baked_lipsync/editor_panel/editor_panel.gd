@@ -3,6 +3,16 @@ extends Control
 
 const RES_SUFFIX = "-lipsync.tres"
 
+@export var rhubard_download_windows := "https://github.com/DanielSWolf/rhubarb-lip-sync/releases/download/v1.13.0/Rhubarb-Lip-Sync-1.13.0-Windows.zip"
+@export var rhubard_download_linux := "https://github.com/DanielSWolf/rhubarb-lip-sync/releases/download/v1.13.0/Rhubarb-Lip-Sync-1.13.0-Linux.zip"
+@export var rhubard_download_macos := "https://github.com/DanielSWolf/rhubarb-lip-sync/releases/download/v1.13.0/Rhubarb-Lip-Sync-1.13.0-macOS.zip"
+const download_temp_file := "user://rhubarb_downloaded.zip"
+
+const oven_path := "res://addons/baked_lipsync/oven/"
+const rhubarb_path_windows: String = oven_path + "Rhubarb-Lip-Sync-1.13.0-Windows/rhubarb.exe"
+const rhubarb_path_linux: String = oven_path + "Rhubarb-Lip-Sync-1.13.0-Linux/rhubarb"
+const rhubarb_path_macos: String = oven_path + "Rhubarb-Lip-Sync-1.13.0-macOS/rhubarb"
+
 @onready var filetree := $FileTree
 
 @onready var label_has_lipsync := $BottomPanel/LabelContainsLipsync
@@ -11,12 +21,35 @@ const RES_SUFFIX = "-lipsync.tres"
 @onready var lipsync_editor_popup := $LipsyncWindow
 @onready var lipsync_editor := $LipsyncWindow/LipsyncEditor
 
+@onready var downloader := $RhubarbDownloader
+
 # Maps full file path
 var resource_map := {}
 
 var current_path := "res://"
 
 func _ready():
+	var rhubarb_file: String = ""
+	match OS.get_name():
+		"Windows":
+			rhubarb_file = rhubarb_path_windows
+		"macOS":
+			rhubarb_file = rhubarb_path_macos
+		"Linux", "FreeBSD", "NetBSD", "OpenBSD", "BSD":
+			rhubarb_file = rhubarb_path_linux
+		_:
+			return false
+	
+	if not FileAccess.file_exists(rhubarb_file):
+		print("DOWNLOADING RHUBARB...")
+		var result: bool = await download_rhubarb()
+		if result:
+			print("    OK!")
+		else:
+			print("    FAILED TO DOWNLOAD OR EXTRACT RHUBARB!")
+	if FileAccess.file_exists(rhubarb_file):
+		print("Rhubarb ready!")
+	
 	refresh_file_tree()
 
 # ============================================================================
@@ -214,3 +247,77 @@ func _on_lipsync_editor_dismissed() -> void:
 	lipsync_editor.stop_preview()
 	lipsync_editor_popup.hide()
 	refresh_file_tree(current_path)
+
+
+func download_rhubarb() -> bool:
+	# There are no emitted signals.
+	# Invoke with await and check result, e.g.:
+	# var result = await download_rhubarb()
+	# if result:
+	#     // do stuff
+	# else:
+	#     // complain about error
+	
+	downloader.download_file = download_temp_file
+	var url := ""
+	var gdignore_path := ""
+	match OS.get_name():
+		"Windows":
+			url = rhubard_download_windows
+			gdignore_path = rhubarb_path_windows.get_base_dir() + "/.gdignore"
+		"macOS":
+			url = rhubard_download_macos
+			gdignore_path = rhubarb_path_macos.get_base_dir() + "/.gdignore"
+		"Linux", "FreeBSD", "NetBSD", "OpenBSD", "BSD":
+			url = rhubard_download_linux
+			gdignore_path = rhubarb_path_linux.get_base_dir() + "/.gdignore"
+		_:
+			return false
+	
+	if FileAccess.file_exists(download_temp_file):
+		DirAccess.remove_absolute(download_temp_file)
+	
+	var err = downloader.request(url)
+	if err != OK:
+		return false
+	
+	print("Downloading file: ", url)
+	var req_result = await downloader.request_completed
+	if req_result[1] != 200:
+		print("ERROR\nResult status: ", req_result[1])
+		return false
+	
+	if FileAccess.file_exists(download_temp_file):
+		print("Extracting downloaded file...")
+		var reader = ZIPReader.new()
+		reader.open(download_temp_file)
+
+		# Destination directory for the extracted files (this folder must exist before extraction).
+		# Not all ZIP archives put everything in a single root folder,
+		# which means several files/folders may be created in `root_dir` after extraction.
+		var root_dir = DirAccess.open(oven_path)
+
+		var files = reader.get_files()
+		for file_path in files:
+			# If the current entry is a directory.
+			if file_path.ends_with("/"):
+				root_dir.make_dir_recursive(file_path)
+				continue
+
+			# Write file contents, creating folders automatically when needed.
+			# Not all ZIP archives are strictly ordered, so we need to do this in case
+			# the file entry comes before the folder entry.
+			root_dir.make_dir_recursive(root_dir.get_current_dir().path_join(file_path).get_base_dir())
+			var file = FileAccess.open(root_dir.get_current_dir().path_join(file_path), FileAccess.WRITE)
+			var buffer = reader.read_file(file_path)
+			file.store_buffer(buffer)
+		
+		var gdignore_file = FileAccess.open(gdignore_path, FileAccess.WRITE)
+		gdignore_file.close()
+		
+		DirAccess.remove_absolute(download_temp_file)
+		return true
+	
+	else:
+		print("There was an error downloading the file.")
+		return false

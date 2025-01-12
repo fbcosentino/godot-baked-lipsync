@@ -7,8 +7,24 @@ const _FIXED_ARGS := [
 	"--machineReadable"
 ]
 
-@export var rhubarb_path: String = "res://addons/baked_lipsync/oven/rhubarb/rhubarb.exe"
-#@export var rhubarb_path: String = "rhubarb.exe"
+const oven_path := "res://addons/baked_lipsync/oven"
+const rhubarb_path_windows: String = oven_path + "/Rhubarb-Lip-Sync-1.13.0-Windows/rhubarb.exe"
+const rhubarb_path_linux: String = oven_path + "/Rhubarb-Lip-Sync-1.13.0-Linux/rhubarb"
+const rhubarb_path_macos: String = oven_path + "/Rhubarb-Lip-Sync-1.13.0-macOS/rhubarb"
+
+var rhubarb_path: String = ""
+
+
+func _init():
+	match OS.get_name():
+		"Windows":
+			rhubarb_path = rhubarb_path_windows
+		"macOS":
+			rhubarb_path = rhubarb_path_macos
+		"Linux", "FreeBSD", "NetBSD", "OpenBSD", "BSD":
+			rhubarb_path = rhubarb_path_linux
+		_:
+			pass
 
 
 func invoke(audio_file: String, is_phonetic: bool = false) -> String:
