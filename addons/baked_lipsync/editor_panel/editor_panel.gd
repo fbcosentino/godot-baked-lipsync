@@ -144,6 +144,9 @@ func _on_path_edit_text_submitted(new_text: String) -> void:
 	refresh_file_tree(current_path)
 
 
+func _on_btn_refresh_pressed() -> void:
+	refresh_file_tree(current_path)
+
 
 # ============================================================================
 # BOTTOM PANEL

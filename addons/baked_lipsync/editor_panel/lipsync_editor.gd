@@ -313,7 +313,7 @@ func _on_btn_preview_play_pressed() -> void:
 
 
 func _on_audio_stream_preview_gui_input(event: InputEvent) -> void:
-	if (event is InputEventMouseButton) and (event.pressed):
+	if (event is InputEventMouseButton) and (event.pressed) and (event.button_index == MOUSE_BUTTON_LEFT):
 		var start: float = timeline.get_local_mouse_position().x / current_pixels_per_second
 		_play_preview(start)
 

@@ -14,6 +14,20 @@ config/name="Baked Lipsync"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
+[display]
+
+window/size/viewport_width=1440
+window/size/viewport_height=810
+window/stretch/mode="canvas_items"
+window/stretch/aspect="keep_height"
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/baked_lipsync/plugin.cfg")
+
+[rendering]
+
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
+anti_aliasing/quality/msaa_2d=2
+anti_aliasing/quality/msaa_3d=2
