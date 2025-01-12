@@ -33,3 +33,14 @@ Optionally, you can manually add expressions, which are strings emitted at speci
 ### Rhubarb
 
 Do notice this plugin uses [Rhubarb](https://github.com/DanielSWolf/rhubarb-lip-sync) to decode the audio and identify the mouth shapes. When activating the plugin for the first time, it will automatically download and extract rhubarb in the addons folder, with a `.gdignore` file so it won't be included in the exported game.
+
+----
+
+### Example
+
+Two examples are provided in the `example` folder: one 3D using blend shapes, and one 2D swapping textures.
+
+In the video below, the mouth shapes were generated automatically by the plugin - no manual work was required. Movements for arms and eyes were done using expressions.
+
+https://github.com/user-attachments/assets/e5afc1d4-2710-412b-a876-cdb88d798a73
+
