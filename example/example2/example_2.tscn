@@ -1,0 +1,74 @@
+[gd_scene load_steps=6 format=3 uid="uid://pdok6yxliwrd"]
+
+[ext_resource type="Script" path="res://example/example2/example_2.gd" id="1_0k3gc"]
+[ext_resource type="Texture2D" uid="uid://ca0g7eutfm5qf" path="res://example/assets/2d_figure/body_neutral.png" id="1_mm2ec"]
+[ext_resource type="Script" path="res://addons/baked_lipsync/nodes/AudioStreamPlayerLipsync/AudioStreamPlayerLipsync.gd" id="2_8ankq"]
+[ext_resource type="Texture2D" uid="uid://b03lxtqbkc24s" path="res://example/assets/2d_figure/eyes_neutral.png" id="2_t0fok"]
+[ext_resource type="Texture2D" uid="uid://qjqx4o6fbwqq" path="res://example/assets/2d_figure/mouth_a_x.png" id="3_k0a0v"]
+
+[node name="Example2" type="Node2D"]
+script = ExtResource("1_0k3gc")
+
+[node name="AudioStreamPlayerLipsync" type="AudioStreamPlayer" parent="."]
+script = ExtResource("2_8ankq")
+
+[node name="Character" type="Node2D" parent="."]
+position = Vector2(352, 488)
+
+[node name="Body" type="Sprite2D" parent="Character"]
+texture = ExtResource("1_mm2ec")
+
+[node name="Eyes" type="Sprite2D" parent="Character"]
+texture = ExtResource("2_t0fok")
+
+[node name="Mouth" type="Sprite2D" parent="Character"]
+texture = ExtResource("3_k0a0v")
+
+[node name="CanvasLayerText" type="CanvasLayer" parent="."]
+
+[node name="TextPreview" type="Label" parent="CanvasLayerText"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -545.0
+offset_top = 213.0
+offset_right = -162.0
+offset_bottom = 566.0
+grow_horizontal = 0
+text = "Lorem ipsum"
+autowrap_mode = 3
+text_overrun_behavior = 4
+
+[node name="BtnAudio3" type="Button" parent="CanvasLayerText"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 336.0
+offset_top = -343.0
+offset_right = 664.0
+offset_bottom = -306.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Button for Audio 3"
+
+[node name="BtnAudio4" type="Button" parent="CanvasLayerText"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 336.0
+offset_top = -271.0
+offset_right = 664.0
+offset_bottom = -234.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "I like you, random character!"
+
+[connection signal="expression_changed" from="AudioStreamPlayerLipsync" to="." method="_on_audio_stream_player_lipsync_expression_changed"]
+[connection signal="lipsync_stopped" from="AudioStreamPlayerLipsync" to="." method="_on_audio_stream_player_lipsync_lipsync_stopped"]
+[connection signal="mouth_shape_changed" from="AudioStreamPlayerLipsync" to="." method="_on_audio_stream_player_lipsync_mouth_shape_changed"]
+[connection signal="pressed" from="CanvasLayerText/BtnAudio3" to="." method="_on_btn_audio_3_pressed"]
+[connection signal="pressed" from="CanvasLayerText/BtnAudio4" to="." method="_on_btn_audio_4_pressed"]

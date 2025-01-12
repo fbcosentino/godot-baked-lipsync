@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://btu0bvjb0cc6j"]
+
+[ext_resource type="Script" path="res://addons/baked_lipsync/audio_preview/AudioStreamPreview.gd" id="1_iyim8"]
+[ext_resource type="PackedScene" uid="uid://c2fo50owdhh06" path="res://addons/baked_lipsync/audio_preview/voice_preview_generator.tscn" id="2_mjwvs"]
+
+[node name="AudioStreamPreview" type="TextureRect"]
+offset_right = 826.0
+offset_bottom = 64.0
+script = ExtResource("1_iyim8")
+
+[node name="VoicePreviewGenerator" parent="." instance=ExtResource("2_mjwvs")]

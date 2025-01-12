@@ -1,0 +1,531 @@
+[gd_scene load_steps=14 format=3 uid="uid://drgkclsn2s712"]
+
+[ext_resource type="Script" path="res://addons/baked_lipsync/editor_panel/lipsync_editor.gd" id="1_vxa4w"]
+[ext_resource type="StyleBox" uid="uid://dqiux30kf4guw" path="res://addons/baked_lipsync/resources/button_hover.stylebox" id="2_e6wmk"]
+[ext_resource type="PackedScene" uid="uid://btu0bvjb0cc6j" path="res://addons/baked_lipsync/audio_preview/AudioStreamPreview.tscn" id="2_lq02m"]
+[ext_resource type="Texture2D" uid="uid://b1ywo0sv2d8sb" path="res://addons/baked_lipsync/images/icons/zoom_less.png" id="3_7cptd"]
+[ext_resource type="StyleBox" uid="uid://btr6afp1jmfnh" path="res://addons/baked_lipsync/resources/button_pressed.stylebox" id="3_bc32v"]
+[ext_resource type="StyleBox" uid="uid://dngd765e4kuy5" path="res://addons/baked_lipsync/resources/button_normal.stylebox" id="3_obr3d"]
+[ext_resource type="PackedScene" uid="uid://ck680tcir8wdu" path="res://addons/baked_lipsync/editor_panel/timeline_item_mouth_shape.tscn" id="3_qnot1"]
+[ext_resource type="Texture2D" uid="uid://bktcncodobwng" path="res://addons/baked_lipsync/images/icons/zoom_reset.png" id="4_gemn8"]
+[ext_resource type="Texture2D" uid="uid://bawm44qamrq76" path="res://addons/baked_lipsync/images/icons/zoom_more.png" id="5_6fajs"]
+[ext_resource type="PackedScene" uid="uid://b1gspkuaaeqbx" path="res://addons/baked_lipsync/ShapePreview2D/ShapePreview2D.tscn" id="7_bp3vv"]
+[ext_resource type="PackedScene" uid="uid://ckfff2cyee05n" path="res://addons/baked_lipsync/ShapePreview3D/ShapePreview3D.tscn" id="8_7q1yp"]
+[ext_resource type="PackedScene" uid="uid://c0taotivjjjja" path="res://addons/baked_lipsync/ShapePreviewSimple/ShapePreviewSimple.tscn" id="9_2da8s"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0hdsh"]
+draw_center = false
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.389287, 0.389287, 0.389286, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[node name="LipsyncEditor" type="Panel"]
+custom_minimum_size = Vector2(600, 550)
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 604.0
+offset_bottom = 404.0
+script = ExtResource("1_vxa4w")
+
+[node name="LabelAudioFile" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 101.0
+offset_right = -5.0
+offset_bottom = 20.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 14
+text = "res://"
+text_overrun_behavior = 4
+
+[node name="Caption" type="Label" parent="LabelAudioFile"]
+self_modulate = Color(1, 1, 1, 0.501961)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -96.0
+offset_top = -8.5
+offset_right = -3.0
+offset_bottom = 8.5
+grow_vertical = 2
+theme_override_font_sizes/font_size = 12
+text = "Audio file:"
+
+[node name="LabelResFile" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 101.0
+offset_top = 24.0
+offset_right = -5.0
+offset_bottom = 44.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 14
+text = "res://"
+text_overrun_behavior = 4
+
+[node name="Caption" type="Label" parent="LabelResFile"]
+self_modulate = Color(1, 1, 1, 0.501961)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -96.0
+offset_top = -8.5
+offset_right = -3.0
+offset_bottom = 8.5
+grow_vertical = 2
+theme_override_font_sizes/font_size = 12
+text = "Resource file:"
+
+[node name="BtnGenerate" type="Button" parent="."]
+layout_mode = 0
+offset_left = 26.0
+offset_top = 62.0
+offset_right = 183.0
+offset_bottom = 93.0
+focus_mode = 0
+theme_override_styles/hover = ExtResource("2_e6wmk")
+theme_override_styles/pressed = ExtResource("3_bc32v")
+theme_override_styles/normal = ExtResource("3_obr3d")
+text = "Generate Lipsync"
+
+[node name="LabelWarning" type="Label" parent="BtnGenerate"]
+self_modulate = Color(1, 1, 1, 0.572549)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 16.0
+offset_top = -18.5
+offset_right = 399.0
+offset_bottom = 18.5
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0.884, 0.71, 1)
+theme_override_font_sizes/font_size = 10
+text = "Warning: the resource already contains lipsync data.
+Generating again will replace it entirely. (Expressions will not be affected.)"
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="PanelTimeline" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 91.0
+offset_top = 112.0
+offset_right = -12.0
+offset_bottom = 300.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_0hdsh")
+metadata/_edit_group_ = true
+
+[node name="CaptionMouthShapes" type="Label" parent="PanelTimeline"]
+self_modulate = Color(1, 1, 1, 0.501961)
+layout_mode = 1
+offset_left = -80.0
+offset_top = 104.0
+offset_right = -2.0
+offset_bottom = 121.0
+theme_override_font_sizes/font_size = 10
+text = "Mouth shapes"
+metadata/_edit_lock_ = true
+
+[node name="CaptionExpressions" type="Label" parent="PanelTimeline"]
+self_modulate = Color(1, 1, 1, 0.501961)
+layout_mode = 1
+offset_left = -80.0
+offset_top = 144.0
+offset_right = -2.0
+offset_bottom = 161.0
+theme_override_font_sizes/font_size = 10
+text = "Expressions"
+metadata/_edit_lock_ = true
+
+[node name="CaptionWaveform" type="Label" parent="PanelTimeline"]
+self_modulate = Color(1, 1, 1, 0.501961)
+layout_mode = 1
+offset_left = -80.0
+offset_top = 50.0
+offset_right = -2.0
+offset_bottom = 67.0
+theme_override_font_sizes/font_size = 10
+text = "Waveform"
+metadata/_edit_lock_ = true
+
+[node name="ScrollContainer" type="ScrollContainer" parent="PanelTimeline"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = -1.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Timeline" type="Control" parent="PanelTimeline/ScrollContainer"]
+custom_minimum_size = Vector2(600, 0)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="AudioStreamPreview" parent="PanelTimeline/ScrollContainer/Timeline" instance=ExtResource("2_lq02m")]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 26.0
+offset_right = 0.0
+offset_bottom = 90.0
+grow_horizontal = 2
+expand_mode = 2
+metadata/_edit_lock_ = true
+
+[node name="MouthShapesBox" type="Control" parent="PanelTimeline/ScrollContainer/Timeline"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 92.0
+offset_bottom = 132.0
+grow_horizontal = 2
+metadata/_edit_lock_ = true
+
+[node name="MouthShape" parent="PanelTimeline/ScrollContainer/Timeline/MouthShapesBox" instance=ExtResource("3_qnot1")]
+
+[node name="ExpressionsBox" type="Control" parent="PanelTimeline/ScrollContainer/Timeline"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 132.0
+offset_bottom = 172.0
+grow_horizontal = 2
+metadata/_edit_lock_ = true
+
+[node name="PlaybackCursor" type="ColorRect" parent="PanelTimeline/ScrollContainer/Timeline"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 2.0
+grow_vertical = 2
+color = Color(1, 0, 1, 1)
+
+[node name="ZoomBox" type="Control" parent="PanelTimeline"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -62.0
+offset_top = 2.0
+offset_right = -2.0
+offset_bottom = 22.0
+grow_horizontal = 0
+metadata/_edit_group_ = true
+
+[node name="BtnZoomOut" type="Button" parent="PanelTimeline/ZoomBox"]
+layout_mode = 0
+offset_right = 20.0
+offset_bottom = 20.0
+icon = ExtResource("3_7cptd")
+icon_alignment = 1
+expand_icon = true
+
+[node name="BtnZoomReset" type="Button" parent="PanelTimeline/ZoomBox"]
+layout_mode = 0
+offset_left = 20.0
+offset_right = 40.0
+offset_bottom = 20.0
+icon = ExtResource("4_gemn8")
+icon_alignment = 1
+expand_icon = true
+
+[node name="BtnZoomIn" type="Button" parent="PanelTimeline/ZoomBox"]
+layout_mode = 0
+offset_left = 40.0
+offset_right = 60.0
+offset_bottom = 20.0
+icon = ExtResource("5_6fajs")
+icon_alignment = 1
+expand_icon = true
+
+[node name="CaptionWaveform" type="Label" parent="PanelTimeline/ZoomBox"]
+self_modulate = Color(1, 1, 1, 0.501961)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -6.0
+offset_right = -6.0
+offset_bottom = 6.0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 8
+text = "Zoom"
+
+[node name="BtnExpressionNew" type="Button" parent="PanelTimeline"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -155.0
+offset_top = 1.0
+offset_bottom = 29.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 12
+theme_override_styles/hover = ExtResource("2_e6wmk")
+theme_override_styles/pressed = ExtResource("3_bc32v")
+theme_override_styles/normal = ExtResource("3_obr3d")
+text = "Create New Expression"
+
+[node name="ExpressionStringEdit" type="LineEdit" parent="PanelTimeline"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 94.0
+offset_top = 1.0
+offset_right = -105.0
+offset_bottom = 29.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 14
+placeholder_text = "expression string"
+
+[node name="CaptionExpressionName" type="Label" parent="PanelTimeline/ExpressionStringEdit"]
+self_modulate = Color(1, 1, 1, 0.501961)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = -94.0
+offset_top = -22.0
+offset_right = 5.0
+offset_bottom = -5.0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 10
+text = "Expression string:"
+
+[node name="BtnExpressionSplit" type="Button" parent="PanelTimeline/ExpressionStringEdit"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = -28.0
+offset_right = 49.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 12
+theme_override_styles/hover = ExtResource("2_e6wmk")
+theme_override_styles/pressed = ExtResource("3_bc32v")
+theme_override_styles/normal = ExtResource("3_obr3d")
+text = "Split"
+
+[node name="BtnExpressionDelete" type="Button" parent="PanelTimeline/ExpressionStringEdit"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 59.0
+offset_top = -28.0
+offset_right = 105.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 12
+theme_override_styles/hover = ExtResource("2_e6wmk")
+theme_override_styles/pressed = ExtResource("3_bc32v")
+theme_override_styles/normal = ExtResource("3_obr3d")
+text = "Delete"
+
+[node name="PreviewBox" type="Panel" parent="."]
+custom_minimum_size = Vector2(575, 137)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 13.0
+offset_top = 352.0
+offset_right = -12.0
+offset_bottom = 489.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_0hdsh")
+
+[node name="Caption" type="Label" parent="PreviewBox"]
+self_modulate = Color(1, 1, 1, 0.501961)
+layout_mode = 1
+offset_left = 9.0
+offset_top = 6.0
+offset_right = 102.0
+offset_bottom = 26.0
+theme_override_font_sizes/font_size = 14
+text = "Preview"
+
+[node name="BtnPreviewStyle" type="OptionButton" parent="PreviewBox"]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 93.0
+offset_right = 141.0
+offset_bottom = 118.0
+theme_override_font_sizes/font_size = 12
+theme_override_styles/hover = ExtResource("2_e6wmk")
+theme_override_styles/pressed = ExtResource("3_bc32v")
+theme_override_styles/normal = ExtResource("3_obr3d")
+selected = 0
+item_count = 3
+popup/item_0/text = "2D (Textures)"
+popup/item_1/text = "3D (Shape keys)"
+popup/item_1/id = 1
+popup/item_2/text = "Simple (3 frames)"
+popup/item_2/id = 2
+
+[node name="Caption" type="Label" parent="PreviewBox/BtnPreviewStyle"]
+self_modulate = Color(1, 1, 1, 0.501961)
+layout_mode = 1
+offset_top = -24.0
+offset_right = 93.0
+offset_bottom = -7.0
+theme_override_font_sizes/font_size = 12
+text = "Preview style"
+
+[node name="ShapePreview2D" parent="PreviewBox" instance=ExtResource("7_bp3vv")]
+layout_mode = 0
+offset_left = 158.0
+offset_top = 13.0
+offset_right = 286.0
+offset_bottom = 118.0
+
+[node name="ShapePreview3D" parent="PreviewBox" instance=ExtResource("8_7q1yp")]
+visible = false
+layout_mode = 0
+offset_left = 150.0
+offset_top = 5.0
+offset_right = 278.0
+offset_bottom = 110.0
+
+[node name="ShapePreview3D_Tip" type="Label" parent="PreviewBox"]
+visible = false
+self_modulate = Color(1, 1, 1, 0.501961)
+layout_mode = 2
+offset_left = 168.0
+offset_top = 101.0
+offset_right = 353.0
+offset_bottom = 132.0
+theme_override_font_sizes/font_size = 10
+text = "Automatically recognized expressions:
+rest, joy, anger, surprise, upset"
+
+[node name="ShapePreviewSimple" parent="PreviewBox" instance=ExtResource("9_2da8s")]
+visible = false
+layout_mode = 0
+offset_left = 150.0
+offset_top = 5.0
+offset_right = 278.0
+offset_bottom = 110.0
+
+[node name="BtnPreviewPlay" type="Button" parent="PreviewBox"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -139.0
+offset_top = 88.0
+offset_right = -8.0
+offset_bottom = 119.0
+grow_horizontal = 0
+theme_override_styles/hover = ExtResource("2_e6wmk")
+theme_override_styles/pressed = ExtResource("3_bc32v")
+theme_override_styles/normal = ExtResource("3_obr3d")
+text = "Play"
+
+[node name="LabelPreviewExpression" type="Label" parent="PreviewBox"]
+layout_mode = 1
+offset_left = 312.0
+offset_top = 27.0
+offset_right = 565.0
+offset_bottom = 47.0
+theme_override_font_sizes/font_size = 14
+text = "-"
+text_overrun_behavior = 4
+
+[node name="Caption" type="Label" parent="PreviewBox/LabelPreviewExpression"]
+self_modulate = Color(1, 1, 1, 0.501961)
+layout_mode = 1
+offset_left = -6.0
+offset_top = -18.0
+offset_right = 106.0
+offset_bottom = -1.0
+theme_override_font_sizes/font_size = 12
+text = "Current expression"
+
+[node name="BtnSave" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -208.0
+offset_top = -39.0
+offset_right = -116.0
+offset_bottom = -8.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_styles/hover = ExtResource("2_e6wmk")
+theme_override_styles/pressed = ExtResource("3_bc32v")
+theme_override_styles/normal = ExtResource("3_obr3d")
+text = "Save"
+
+[node name="BtnCancel" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -104.0
+offset_top = -39.0
+offset_right = -12.0
+offset_bottom = -8.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_styles/hover = ExtResource("2_e6wmk")
+theme_override_styles/pressed = ExtResource("3_bc32v")
+theme_override_styles/normal = ExtResource("3_obr3d")
+text = "Cancel"
+
+[connection signal="pressed" from="BtnGenerate" to="." method="_on_btn_generate_pressed"]
+[connection signal="generation_completed" from="PanelTimeline/ScrollContainer/Timeline/AudioStreamPreview" to="." method="_on_audio_stream_preview_generation_completed"]
+[connection signal="generation_started" from="PanelTimeline/ScrollContainer/Timeline/AudioStreamPreview" to="." method="_on_audio_stream_preview_generation_started"]
+[connection signal="gui_input" from="PanelTimeline/ScrollContainer/Timeline/AudioStreamPreview" to="." method="_on_audio_stream_preview_gui_input"]
+[connection signal="pressed" from="PanelTimeline/ZoomBox/BtnZoomOut" to="." method="_on_btn_zoom_out_pressed"]
+[connection signal="pressed" from="PanelTimeline/ZoomBox/BtnZoomReset" to="." method="_on_btn_zoom_reset_pressed"]
+[connection signal="pressed" from="PanelTimeline/ZoomBox/BtnZoomIn" to="." method="_on_btn_zoom_in_pressed"]
+[connection signal="pressed" from="PanelTimeline/BtnExpressionNew" to="." method="_on_btn_expression_new_pressed"]
+[connection signal="text_submitted" from="PanelTimeline/ExpressionStringEdit" to="." method="_on_expression_string_edit_text_submitted"]
+[connection signal="pressed" from="PanelTimeline/ExpressionStringEdit/BtnExpressionSplit" to="." method="_on_btn_expression_split_pressed"]
+[connection signal="pressed" from="PanelTimeline/ExpressionStringEdit/BtnExpressionDelete" to="." method="_on_btn_expression_delete_pressed"]
+[connection signal="item_selected" from="PreviewBox/BtnPreviewStyle" to="." method="_on_btn_preview_style_item_selected"]
+[connection signal="expression_changed" from="PreviewBox/ShapePreview2D" to="." method="_on_preview_expression_changed"]
+[connection signal="expression_changed" from="PreviewBox/ShapePreview3D" to="." method="_on_preview_expression_changed"]
+[connection signal="expression_changed" from="PreviewBox/ShapePreviewSimple" to="." method="_on_preview_expression_changed"]
+[connection signal="pressed" from="PreviewBox/BtnPreviewPlay" to="." method="_on_btn_preview_play_pressed"]
+[connection signal="pressed" from="BtnSave" to="." method="_on_btn_save_pressed"]
+[connection signal="pressed" from="BtnCancel" to="." method="_on_btn_cancel_pressed"]

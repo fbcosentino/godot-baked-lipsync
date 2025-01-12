@@ -1,0 +1,59 @@
+[gd_resource type="Resource" script_class="AudioStreamLipsync" load_steps=5 format=3 uid="uid://b1xs2x0hmwn3d"]
+
+[ext_resource type="AudioStream" uid="uid://dcyqtajmjo1dj" path="res://example/assets/voices/audio2.wav" id="1_pk6pv"]
+[ext_resource type="Script" path="res://addons/baked_lipsync/resources/audio_stream_lipsync.gd" id="2_hw3hm"]
+
+[sub_resource type="Animation" id="Animation_jc64g"]
+length = 4.19
+tracks/0/type = "audio"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("1_pk6pv")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/0/use_blend = true
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:mouth_shape_set")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.22, 0.64, 0.93, 0.97, 1.01, 1.08, 1.16, 1.69, 2.64, 2.68, 2.72, 2.86, 2.93, 3, 3.14, 3.28, 4.18),
+"transitions": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+"update": 1,
+"values": [0, 2, 3, 2, 8, 3, 2, 1, 2, 0, 3, 2, 5, 6, 3, 5, 6, 0, 0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:expression_set")
+tracks/2/interp = 0
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.132736, 2.53932, 2.63932, 3.84302, 3.97818),
+"transitions": PackedFloat32Array(0, 0, 0, 0, 0, 0),
+"update": 1,
+"values": ["face_annoyed", "think2", "face_fun", "i_dont_know", "face_neutral", "neutral"]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_puemy"]
+_data = {
+"play": SubResource("Animation_jc64g")
+}
+
+[resource]
+script = ExtResource("2_hw3hm")
+audio_stream = ExtResource("1_pk6pv")
+animation_library = SubResource("AnimationLibrary_puemy")
+animation = SubResource("Animation_jc64g")
+lipsync_data = [[0.0, "X"], [0.1, "B"], [0.22, "C"], [0.64, "B"], [0.93, "H"], [0.97, "C"], [1.01, "B"], [1.08, "A"], [1.16, "B"], [1.69, "X"], [2.64, "C"], [2.68, "B"], [2.72, "E"], [2.86, "F"], [2.93, "C"], [3.0, "E"], [3.14, "F"], [3.28, "X"], [4.18, "X"]]
+expression_data = [[0.0, "face_annoyed"], [0.132736, "think2"], [2.53932, "face_fun"], [2.63932, "i_dont_know"], [3.84302, "face_neutral"], [3.97818, "neutral"]]

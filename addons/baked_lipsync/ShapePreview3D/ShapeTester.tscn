@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://tn7gxtcnoyra"]
+
+[ext_resource type="Script" path="res://addons/baked_lipsync/ShapePreview3D/ShapeTester.gd" id="1_4usux"]
+[ext_resource type="PackedScene" uid="uid://bvsdg0ovo1j0c" path="res://addons/baked_lipsync/ShapePreview3D/cubehead.glb" id="1_mx1t4"]
+[ext_resource type="AnimationLibrary" uid="uid://b53ax20ldlm2e" path="res://addons/baked_lipsync/ShapePreview3D/cubehead_mouth_animlib.tres" id="2_k5q7n"]
+[ext_resource type="AnimationLibrary" uid="uid://cot8gi2rd2g13" path="res://addons/baked_lipsync/ShapePreview3D/cubehead_expression_animlib.tres" id="2_w4t6x"]
+[ext_resource type="AnimationNodeBlendTree" uid="uid://c062hb8vtcijh" path="res://addons/baked_lipsync/ShapePreview3D/cubehead_animtree.tres" id="3_m3w7s"]
+
+[node name="ShapeTester" type="Node3D"]
+script = ExtResource("1_4usux")
+
+[node name="cubehead" parent="." instance=ExtResource("1_mx1t4")]
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = ExtResource("3_m3w7s")
+anim_player = NodePath("../AnimationPlayer")
+parameters/blend/blend_amount = 0.0
+parameters/expression/current_state = "rest"
+parameters/expression/transition_request = ""
+parameters/expression/current_index = 0
+parameters/mouth/current_state = "state_0"
+parameters/mouth/transition_request = ""
+parameters/mouth/current_index = 0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"expression": ExtResource("2_w4t6x"),
+"mouth": ExtResource("2_k5q7n")
+}

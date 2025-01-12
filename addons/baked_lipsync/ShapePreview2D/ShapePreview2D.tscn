@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://b1gspkuaaeqbx"]
+
+[ext_resource type="Texture2D" uid="uid://cdp0wwqm38jlx" path="res://addons/baked_lipsync/images/preview_images/lisa-X.png" id="1_xmw2v"]
+[ext_resource type="Script" path="res://addons/baked_lipsync/ShapePreview2D/ShapePreview2D.gd" id="2_nawgd"]
+[ext_resource type="Script" path="res://addons/baked_lipsync/nodes/AudioStreamPlayerLipsync/AudioStreamPlayerLipsync.gd" id="3_3mgsy"]
+
+[node name="ShapePreview2D" type="TextureRect"]
+offset_right = 128.0
+offset_bottom = 105.0
+texture = ExtResource("1_xmw2v")
+expand_mode = 1
+stretch_mode = 5
+script = ExtResource("2_nawgd")
+
+[node name="AudioPlayerLipsync" type="AudioStreamPlayer" parent="."]
+script = ExtResource("3_3mgsy")
+
+[connection signal="expression_changed" from="AudioPlayerLipsync" to="." method="_on_audio_player_lipsync_expression_changed"]
+[connection signal="mouth_shape_changed" from="AudioPlayerLipsync" to="." method="_on_audio_player_lipsync_mouth_shape_changed"]
